@@ -1,15 +1,18 @@
-//App.vue
+//App
 
 <template>
-    <h1>{{title}}</h1>
+    <Header/>
 </template>
 
 <script>
+import Header from './components/Header.vue'
+
 export default {
     data: () => {
-        return {
-            title: "Travel Tips Blog"
-        };
-  }
+        return {};
+  },
+  components: {
+    Header
+  },
 }
 </script>

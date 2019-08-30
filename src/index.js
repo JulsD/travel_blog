@@ -3,15 +3,16 @@ import VueRouter from 'vue-router';
 
 import _ from 'lodash';
 
+import router from './router';
+import store from './store';
 import App from './App.vue';
 
 Vue.use(VueRouter);
 
 new Vue({
-    el: "#app",
-    components: { App },
-    render (h) {
-      return h('App')
-    }
-});
+  el: '#app',
+  // router,
+  // store,
+  render: h => h(App)
+})
 
