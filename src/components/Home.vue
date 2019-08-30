@@ -1,6 +1,8 @@
 // Home
 <template>
   <main>
+  {{count}}
+  <button @click="increment()">Increment</button>        
   <section>
   <h1>Just starting the main {{homeTitle}} block</h1>
   <p>Going to add some text here</p>
@@ -11,8 +13,8 @@
 <script>
 export default {
   computed: {
-    username () {
-      return this.$route.params.username
+    count () {
+      return this.$store.state.count
     }
   },
   data () {
@@ -43,6 +45,10 @@ export default {
     //       this.post = post
     //     }
     //   })
+    },
+    increment () {
+
+        this.$store.commit('increment')
     }
   }
 }
