@@ -11,11 +11,13 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
+
 export default {
   computed: {
-    count () {
-      return this.$store.state.count
-    }
+    ...mapState([
+        'count'
+    ])
   },
   data () {
     return {
@@ -46,10 +48,9 @@ export default {
     //     }
     //   })
     },
-    increment () {
-
-        this.$store.commit('increment')
-    }
+    ...mapMutations([
+      'increment'
+    ])
   }
 }
 </script>
