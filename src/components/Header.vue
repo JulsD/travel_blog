@@ -9,7 +9,6 @@
             </li>
         </ul>
     </nav>
-    <router-view></router-view>
   </header>
 </template>
 
@@ -24,8 +23,12 @@ export default {
                     href: '/'
                 },
                 {
-                    title: 'Demo',
-                    href: '/demo'
+                    title: 'Demo 1',
+                    href: '/demo/1'
+                },
+                {
+                    title: 'Demo 2',
+                    href: '/demo/2'
                 }
             ]
         }
