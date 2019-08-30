@@ -12,8 +12,8 @@
 <script>
 export default {
   computed: {
-    username () {
-      return this.$route.params.username
+    id () {
+      return this.$route.params.id
     }
   },
   methods: {

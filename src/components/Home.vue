@@ -2,7 +2,7 @@
 <template>
   <main>
   <section>
-  <h1>Just starting the main block</h1>
+  <h1>Just starting the main {{homeTitle}} block</h1>
   <p>Going to add some text here</p>
   </section>
   </main>
@@ -15,11 +15,34 @@ export default {
       return this.$route.params.username
     }
   },
+  data () {
+    return {
+      loading: false,
+      homeTitle: null,
+      error: null
+    }
+  },
+  created () {
+    // fetch the data when the view is created and the data is
+    // already being observed
+    this.fetchData()
+  },
+  watch: {
+    // call again the method if the route changes
+    '$route': 'fetchData'
+  },
   methods: {
-    goBack () {
-      window.history.length > 1
-        ? this.$router.go(-1)
-        : this.$router.push('/')
+    fetchData () {
+      this.error = this.post = null
+      this.loading = true
+    //   getPost(this.$route.params.id, (err, post) => {
+    //     this.loading = false
+    //     if (err) {
+    //       this.error = err.toString()
+    //     } else {
+    //       this.post = post
+    //     }
+    //   })
     }
   }
 }
