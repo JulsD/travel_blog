@@ -5,10 +5,11 @@
     <nav>
         <ul>
             <li v-for="link in links" :key="link.title">
-                <a :href="link.href">{{ link.title }}</a>
+                <router-link :to="link.href">{{ link.title }}</router-link>
             </li>
         </ul>
     </nav>
+    <router-view></router-view>
   </header>
 </template>
 
@@ -19,8 +20,12 @@ export default {
             logoTitle: 'Travel Blog',
             links: [
                 {
-                    title: 'nav1',
+                    title: 'Home',
                     href: '/'
+                },
+                {
+                    title: 'Demo',
+                    href: '/demo'
                 }
             ]
         }

@@ -3,16 +3,17 @@ import VueRouter from 'vue-router';
 
 import _ from 'lodash';
 
-import router from './router';
+import routes from './router';
 import store from './store';
 import App from './App.vue';
+
+const router = new VueRouter({routes})
 
 Vue.use(VueRouter);
 
 new Vue({
-  el: '#app',
-  // router,
+  router,
   // store,
   render: h => h(App)
-})
+}).$mount('#app')
 
