@@ -3,5 +3,5 @@ import Demo from './components/Demo.vue'
 
 export default [
     { path: '/', component: Home },
-    { path: '/demo', component: Demo }
+    { path: '/demo/:id', component: Demo }
 ]

@@ -4,6 +4,7 @@
   <section>
   <h1>Just starting the demo block</h1>
   <p>Going to add some text here</p>
+  <div>Demo {{ $route.params.id }}</div>
   </section>
   </main>
 </template>
