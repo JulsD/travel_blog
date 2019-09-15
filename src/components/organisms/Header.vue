@@ -2,7 +2,7 @@
 <template>
   <header>
     <div class="main-wrapper header-wrapper">
-        <div class="logo">{{logoTitle}}</div>
+        <Logo />
         <nav>
             <ul>
                 <li v-for="link in links" :key="link.title">
@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import Logo from '../molecules/logo.vue';
+
 export default {
     data: () => {
         return {
@@ -40,6 +42,9 @@ export default {
                 }
             ]
         }
+    },
+    components: {
+        Logo
     }
 }
 </script>
