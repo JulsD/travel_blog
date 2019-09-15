@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Vuex from 'vuex'
 
 import _ from 'lodash';
+import './styles';
 
 import routes from './router';
 import storadge from './store';

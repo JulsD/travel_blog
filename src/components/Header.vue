@@ -37,5 +37,14 @@ export default {
 </script>
 
 <style>
+header {
+    background-color: var(--primary-color-1-tint);
+    border-bottom: 20px solid #E7ECFF;
+    color: #416165;
+}
 
+nav {
+    background-color: #e6efff;
+    color: #bbd1e9;
+}
 </style>
