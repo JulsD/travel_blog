@@ -6,10 +6,7 @@
         <Nav />
     </div>
     <Wave />
-    <div id="citate-block">
-        {{citate}}
-        <Wave />
-    </div>
+    <Citation />
   </header>
 </template>
 
@@ -17,17 +14,18 @@
 import Logo from '../molecules/Logo.vue';
 import Nav from '../molecules/Nav.vue';
 import Wave from '../atoms/Wave.vue';
+import Citation from '../molecules/Citation.vue';
 
 export default {
     data: () => {
         return {
-            citate: 'some good fraze here'
         }
     },
     components: {
         Logo,
         Nav,
-        Wave
+        Wave,
+        Citation
     }
 }
 </script>
@@ -35,7 +33,6 @@ export default {
 <style>
 header {
     background-color: var(--primary-color-1-tint);
-    border-bottom: 20px solid #E7ECFF;
     color: #416165;
 }
 
@@ -46,15 +43,7 @@ header {
     align-items: center;
 }
 
-#wave path {
+header > #wave path {
     fill: var(--primary-color-2);
-}
-
-#citate-block {
-    background-color: var(--primary-color-2);
-    text-align: center;
-    font-size: 1.5rem;
-    font-style: italic;
-    font-weight: 300;
 }
 </style>
