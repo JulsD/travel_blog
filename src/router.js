@@ -1,5 +1,5 @@
-import Home from './components/Home.vue'
-import Demo from './components/Demo.vue'
+import Home from './components/pages/Home.vue'
+import Demo from './components/pages/Demo.vue'
 
 export default [
     { path: '/', component: Home },
