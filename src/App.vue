@@ -1,20 +1,23 @@
 // App.component.vue
 
 <template>
-   <h1>{{message}}</h1>
+<div>
+    <Header/>
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
+  </div>
 </template>
-<script>
-   export default {
-      data: () => {
-         return {
-            message: 'Hello from the Vue App!'
-         }
-      }
-   }
-</script>
 
-<style scoped>
-   h1 {
-      color: purple;
-   }
-</style> 
+<script>
+import Header from './components/Header.vue'
+
+export default {
+    data: () => {
+        return {};
+  },
+    components: {
+        Header
+    }
+}
+</script>

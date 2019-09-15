@@ -1,54 +1,38 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
-  entry: [
-    './src/app.js'
-  ],
+  mode: "development",
+  entry: ["./src/index.js"],
   output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
+    filename: "main.js",
+    path: path.resolve(__dirname, "dist")
   },
+  devtool: 'inline-source-map',
   devServer: {
-    contentBase: './dist'
+    contentBase: "./dist"
   },
   module: {
     rules: [
-      {
-        test: /\.js?$/,
-        loader: 'babel-loader',
-        exclude: file => (
-            /node_modules/.test(file) &&
-            !/\.vue\.js/.test(file)
-          )
-    },
     {
         test: /\.vue$/,
         loader: 'vue-loader'
-    },
-    {
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env']
+        }
+      },
+      {
         test: /\.css$/,
         use: [
-            'vue-style-loader',
-            'css-loader'
-        ]
-    },
-    {
-        test: /\.scss$/,
-        use: [
           'vue-style-loader',
-          'css-loader',
-          'sass-loader'
-        ]
-    },
-    {
-        test: /\.styl(us)?$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          'stylus-loader'
+          'css-loader'
         ]
       }
     ]
@@ -60,10 +44,12 @@ module.exports = {
     extensions: ['*', '.js', '.vue', '.json']
   },
   plugins: [
-      new VueLoaderPlugin(),
-      new HtmlWebpackPlugin({
-        title: 'Travel Blog',
-        template: path.resolve(__dirname, './src/index.html')
-      })
+    new VueLoaderPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Travel blog',
+      hash: true,
+      template: './src/index.html'
+    }),
+    new CleanWebpackPlugin()
   ]
 };
