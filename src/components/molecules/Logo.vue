@@ -20,7 +20,7 @@ export default {
 .logo {
     display: flex;
     align-items: center;
-    color: var(--text-color-darck);
+    color: var(--text-color-dark);
     font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
