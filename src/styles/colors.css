@@ -1,0 +1,14 @@
+:root {
+    --primary-color-1: #F4EBC8;
+    --primary-color-1-tint: #faf7e9;
+    --primary-color-1-shade: #c3bca0;
+
+    --primary-color-2: #E7ECFF;
+    --primary-color-2-tint: #fafbff;
+    --primary-color-2-shade: #cfd4e5;
+
+    --text-color: #416165;
+    
+    --secondary-color-1: #e6efff;
+    --secondary-color-2: #bbd1e9;
+}
