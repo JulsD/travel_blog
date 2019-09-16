@@ -1,6 +1,6 @@
 // Header
 <template>
-  <header>
+  <header id="header">
     <div class="main-wrapper header-wrapper">
         <Logo />
         <Nav />
@@ -31,8 +31,8 @@ export default {
 </script>
 
 <style>
-header {
-    background-color: var(--primary-color-1-tint);
+#header {
+    background-color: var(--primary-color-1);
     color: #416165;
     overflow: hidden;
 }
@@ -44,12 +44,12 @@ header {
     align-items: center;
 }
 
-header #wave {
+.header-wrapper + #wave {
     width: 150%;
     animation: swing-gorizontal 3s ease-in infinite .2s alternate-reverse;
 
 }
-header #wave path {
+.header-wrapper + #wave path {
     fill: var(--primary-color-2);
 }
 </style>
