@@ -34,6 +34,7 @@ data: () => {
     font-size: 1.5rem;
     font-style: italic;
     font-weight: 300;
+    overflow: hidden;
 }
 
 #citation-block blockquote {
@@ -44,7 +45,6 @@ data: () => {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: center; */
 }
 
 #citation-block blockquote b {
@@ -54,6 +54,11 @@ data: () => {
 #citation-block blockquote i {
     text-align: right;
     font-size: 1.2rem;
+}
+
+#citation-block #wave {
+    width: 150%;
+    animation: swing-gorizontal 5s ease-out infinite .2s alternate-reverse;
 }
 
 #citation-block #wave path {

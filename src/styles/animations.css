@@ -11,3 +11,9 @@
     60%  {transform: rotate3d(0, 1, 0, 270deg);}
     100% {transform: rotate3d(0, 1, 0, 360deg);}
   }
+
+@keyframes swing-gorizontal {
+    0%   {transform: translateX(0);}
+    50%  {transform: translateX(-15%);}
+    100%  {transform: translateX(-30%);}
+}
