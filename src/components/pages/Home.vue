@@ -1,13 +1,14 @@
 // Home
 <template>
-  <main>
-  {{count}}
-  <button @click="increment()">Increment</button>        
+<div class="grid-container main-wrapper">
+  <main>   
   <section>
   <h1>Just starting the main {{homeTitle}} block</h1>
   <p>Going to add some text here</p>
   </section>
   </main>
+  <aside>Sidebar</aside>
+</div>
 </template>
 
 <script>
