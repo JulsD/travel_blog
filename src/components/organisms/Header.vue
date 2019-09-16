@@ -34,6 +34,7 @@ export default {
 header {
     background-color: var(--primary-color-1-tint);
     color: #416165;
+    overflow: hidden;
 }
 
 .header-wrapper {
@@ -43,7 +44,12 @@ header {
     align-items: center;
 }
 
-header > #wave path {
+header #wave {
+    width: 150%;
+    animation: swing-gorizontal 3s ease-in infinite .2s alternate-reverse;
+
+}
+header #wave path {
     fill: var(--primary-color-2);
 }
 </style>
