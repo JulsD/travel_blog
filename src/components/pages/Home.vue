@@ -3,8 +3,7 @@
 <div class="grid-container main-wrapper">
   <main>   
   <section>
-  <h1>Just starting the main {{homeTitle}} block</h1>
-  <p>Going to add some text here</p>
+    <PostShort v-for="n in 5" :key="n"/>
   </section>
   </main>
   <aside>Sidebar</aside>
@@ -13,6 +12,7 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex'
+import PostShort from '../organisms/PostShort.vue'
 
 export default {
   computed: {
@@ -26,6 +26,9 @@ export default {
       homeTitle: null,
       error: null
     }
+  },
+  components: {
+    PostShort
   },
   created () {
     // fetch the data when the view is created and the data is

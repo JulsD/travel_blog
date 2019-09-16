@@ -65,6 +65,6 @@ nav a:visited {
 }
 
 nav a:hover {
-    color: var(--text-color-dark);
+    color: var(--text-color);
 }
 </style>

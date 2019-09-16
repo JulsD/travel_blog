@@ -20,7 +20,7 @@ export default {
 .logo {
     display: flex;
     align-items: center;
-    color: var(--text-color-dark);
+    color: var(--text-color);
     font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
@@ -52,7 +52,7 @@ export default {
     right: 0;
     bottom: 0;
     border-radius: 50%;
-    border: 2px dashed var(--text-color-light);
+    border: 2px dashed var(--text-color);
 }
 
 .logo:hover [class^="icon-"]:after {
