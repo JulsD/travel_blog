@@ -1,7 +1,7 @@
 // Home
 <template>
 <div class="grid-container main-wrapper">
-  <main>   
+  <main>
   <section>
     <PostShort v-for="n in 5" :key="n"/>
   </section>
@@ -11,21 +11,21 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
-import PostShort from '../organisms/PostShort.vue'
-import Sidebar from '../organisms/Sidebar.vue'
+import { mapState, mapMutations, mapActions } from 'vuex'
+import PostShort from '../components/organisms/PostShort.vue'
+import Sidebar from '../components/organisms/Sidebar.vue'
 
 export default {
   computed: {
-    ...mapState([
-        'count'
-    ])
+    // ...mapState([
+    //     'count',
+    // ])
   },
   data () {
     return {
-      loading: false,
-      homeTitle: null,
-      error: null
+    //   loading: false,
+    //   homeTitle: null,
+    //   error: null
     }
   },
   components: {
@@ -35,16 +35,16 @@ export default {
   created () {
     // fetch the data when the view is created and the data is
     // already being observed
-    this.fetchData()
+    // this.fetchData()
   },
   watch: {
     // call again the method if the route changes
-    '$route': 'fetchData'
+    // '$route': 'fetchData'
   },
   methods: {
-    fetchData () {
-      this.error = this.post = null
-      this.loading = true
+    // fetchData () {
+    //   this.error = this.post = null
+    //   this.loading = true
     //   getPost(this.$route.params.id, (err, post) => {
     //     this.loading = false
     //     if (err) {
@@ -53,10 +53,10 @@ export default {
     //       this.post = post
     //     }
     //   })
-    },
-    ...mapMutations([
-      'increment'
-    ])
+    // },
+    // ...mapMutations([
+    //   'increment'
+    // ]),
   }
 }
 </script>
