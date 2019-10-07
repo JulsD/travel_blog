@@ -6,13 +6,14 @@
     <PostShort v-for="n in 5" :key="n"/>
   </section>
   </main>
-  <aside>Sidebar</aside>
+  <Sidebar />
 </div>
 </template>
 
 <script>
 import { mapState, mapMutations } from 'vuex'
 import PostShort from '../organisms/PostShort.vue'
+import Sidebar from '../organisms/Sidebar.vue'
 
 export default {
   computed: {
@@ -28,7 +29,8 @@ export default {
     }
   },
   components: {
-    PostShort
+    PostShort,
+    Sidebar
   },
   created () {
     // fetch the data when the view is created and the data is
