@@ -5,11 +5,20 @@
             <li v-for="link in links" :key="link.title">
                 <router-link :to="link.href">{{ link.title }}</router-link>
             </li>
+            <li>
+                <div class="auth auth-container">
+                    <div class="portret" v-if="user"><img :src="user.image" :alt="user.name"></div>
+                    <button v-if="!isLoggedIn" @click="login()">Login with Google</button>
+                    <button v-if="isLoggedIn" @click="logout()">Logout</button>
+                </div>
+            </li>
         </ul>
     </nav>
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
+
 export default {
     data: () => {
         return {
@@ -28,6 +37,12 @@ export default {
                 }
             ]
         }
+    },
+    computed: {
+        ...mapState('auth', ['user', 'isLoggedIn'])
+    },
+    methods: {
+        ...mapActions('auth', ['login', 'logout'])
     }
 }
 </script>
@@ -66,5 +81,22 @@ nav a:visited {
 
 nav a:hover {
     color: var(--text-color);
+}
+
+.auth-container {
+    display: flex;
+    align-items: center;
+}
+.auth-container .portret {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.auth-container .portret img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
 }
 </style>
