@@ -1,17 +1,22 @@
 // Logo
 <template>
   <a href="/home" class="logo">
-    <span class="icon-earth "></span>
+    <LogoImage></LogoImage>
     <span>{{logoTitle}}</span>
   </a>
 </template>
 
 <script>
+import LogoImage from '../atoms/LogoImage.vue';
+
 export default {
     data: () => {
         return {
             logoTitle: 'Travel Blog'
         }
+    },
+    components: {
+        LogoImage
     }
 }
 </script>
