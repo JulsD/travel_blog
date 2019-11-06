@@ -6,9 +6,10 @@
     --primary-color-2: #72d4cc;
     --primary-color-2-tint: #b0e7e3;
     --primary-color-2-shade: #31a097;
+    --primary-color-2-dark: #224e49;
 
     --text-color: var(--primary-color-2-shade);
-    --text-color-dark: #224e49;
+    --text-color-dark: var(--primary-color-2-dark);
 
     --grey-color: #a2a185;
     

@@ -29,6 +29,7 @@ export default {
     font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
+    text-shadow: 1px 1px var(--text-color-dark);
 }
 
 .logo .ice-cream-wrapper {

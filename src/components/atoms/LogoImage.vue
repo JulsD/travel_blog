@@ -42,6 +42,7 @@ export default {
     width: 4em;
     height: 2em;
     background-color: var(--cup-color);
+    border-right: 1px solid var(--primary-color-2-shade);
     border-radius: 0 0 8em 8em;
     box-shadow: 
                 inset 3px 0px var(--cup-color-l), 
@@ -54,6 +55,7 @@ export default {
     width: 3em;
     height: .5em;
     background-color: var(--cup-color);
+    border-right: 1px solid var(--primary-color-2-shade);
     border-radius: 100em 100em 0 0;
     box-shadow: 
                 inset 5px 1px var(--cup-color-l), 
@@ -67,6 +69,7 @@ export default {
     width: 0.5em;
     height: 1em;
     background-color: var(--cup-color);
+    border-right: 1px solid var(--primary-color-2-shade);
     box-shadow: 
                 inset 3px 0px var(--cup-color-l), 
                 inset -3px -1px var(--cup-color-r);
