@@ -41,7 +41,7 @@ export default {
     padding: var(--gap-2);
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .header-wrapper + #wave {
