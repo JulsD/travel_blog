@@ -29,7 +29,7 @@ export default {
 
 .sidebar-container {
     background-color: var(--primary-color-2-tint);
-    border-radius: var(--gap-2);
+    border-radius: calc(var(--gap-1)/2);
     padding: var(--gap-3);
 }
 </style>
