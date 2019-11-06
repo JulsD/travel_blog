@@ -7,8 +7,8 @@
     --primary-color-2-tint: #b0e7e3;
     --primary-color-2-shade: #31a097;
 
-    /* --text-color: #560319; */
     --text-color: var(--primary-color-2-shade);
+    --text-color-dark: #224e49;
 
     --grey-color: #a2a185;
     

@@ -5,7 +5,6 @@
         <Logo />
         <Nav />
     </div>
-    <Wave />
     <Citation />
   </header>
 </template>
@@ -13,7 +12,6 @@
 <script>
 import Logo from '../molecules/Logo.vue';
 import Nav from '../molecules/Nav.vue';
-import Wave from '../atoms/Wave.vue';
 import Citation from '../molecules/Citation.vue';
 
 export default {
@@ -24,7 +22,6 @@ export default {
     components: {
         Logo,
         Nav,
-        Wave,
         Citation
     }
 }
@@ -42,14 +39,5 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-}
-
-.header-wrapper + #wave {
-    width: 150%;
-    animation: swing-gorizontal 3s ease-in infinite .2s alternate-reverse;
-
-}
-.header-wrapper + #wave path {
-    fill: var(--primary-color-2);
 }
 </style>
