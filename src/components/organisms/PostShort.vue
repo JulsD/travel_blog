@@ -58,7 +58,7 @@ export default {
 
 .post-short-title {
     margin: var(--gap-1) 0;
-    color: var(--text-color);
+    color: var(--text-color-dark);
     font-size: 1.2rem;
 }
 
