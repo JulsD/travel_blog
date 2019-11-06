@@ -30,6 +30,8 @@ data: () => {
 <style>
 #citation-block {
     background-color: var(--primary-color-2);
+    color: var(--primary-color-1-tint);
+    text-shadow: 1px 1px var(--grey-color);
     text-align: center;
     font-size: 1.5rem;
     font-style: italic;
