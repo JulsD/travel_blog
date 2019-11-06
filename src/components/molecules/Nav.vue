@@ -70,18 +70,19 @@ nav li:first-child {
 nav a {
     padding: var(--gap-1);
     text-decoration: none;
-    transition: color .3s ease-out;
+    transition: text-shadow .3s ease-out;
     font-size: 1.1rem;
-    font-weight: bold;
+    font-weight: 500;
+    text-shadow: 1px 1px transparent;
 }
 
 nav a,
 nav a:visited {
-    color: var(--grey-color);
+    color: var(--text-color);
 }
 
 nav a:hover {
-    color: var(--text-color);
+    text-shadow: 1px 1px var(--text-color-dark);
 }
 
 .auth-container {
