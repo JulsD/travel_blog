@@ -43,13 +43,14 @@ export default {
 
 .post-short {
     padding: var(--gap-3) var(--gap-4);
+    border: 1px dashed transparent;
     border-radius: calc(var(--gap-1)/2);
-    border: 1px dashed var(--primary-color-1-shade); 
+    background-color: var(--primary-color-2-tint);
     transition: border-color .3s ease-out;
 }
 
 .post-short-link:hover .post-short {
-   border-color: var(--primary-color-2-shade);
+    border-color: var(--primary-color-2-shade);
 }
 
 .post-short-header {
