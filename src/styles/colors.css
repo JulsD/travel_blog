@@ -8,7 +8,10 @@
     --primary-color-2-shade: #31a097;
     --primary-color-2-dark: #224e49;
 
+    --primary-color-2-op10: hsla(180, 53.3%, 63.9%, 10%);
+
     --text-color: var(--primary-color-2-shade);
+    --text-color-light: var(--primary-color-1-tint);
     --text-color-dark: var(--primary-color-2-dark);
 
     --grey-color: #a2a185;
