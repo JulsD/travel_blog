@@ -23,10 +23,6 @@ export default {
 </script>
 
 <style>
-#sidebar {
-    padding: var(--gap-2);
-}
-
 .sidebar-container {
     background-color: var(--primary-color-2-tint);
     border-radius: calc(var(--gap-1)/2);
