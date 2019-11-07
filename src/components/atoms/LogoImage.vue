@@ -26,7 +26,7 @@ export default {
 
 .ice-cream-cup {
     --cup-color: hsla(178, 25%, 77%, var(--opacity));
-    --cup-color-l: hsla(178, 25%, 100%, var(--opacity));
+    --cup-color-l: hsla(178, 25%, 99%, var(--opacity));
     --cup-color-r: hsla(178, 25%, 60%, var(--opacity));
     display: flex;
     flex-direction: column;
@@ -56,6 +56,7 @@ export default {
     height: .5em;
     background-color: var(--cup-color);
     border-right: 1px solid var(--primary-color-2-shade);
+    border-bottom: 1px solid var(--primary-color-2-shade);
     border-radius: 100em 100em 0 0;
     box-shadow: 
                 inset 5px 1px var(--cup-color-l), 

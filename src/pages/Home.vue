@@ -2,9 +2,9 @@
 <template>
 <div class="grid-container main-wrapper">
   <main>
-  <section>
-    <PostShort v-for="n in 5" :key="n"/>
-  </section>
+    <section>
+      <PostShort v-for="n in 5" :key="n"/>
+    </section>
   </main>
   <Sidebar />
 </div>
