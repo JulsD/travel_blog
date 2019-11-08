@@ -4,7 +4,7 @@
     <section>
         <h1>Posts</h1>
         <div>
-            <PostShort v-for="a in articles" :key="a.title" :article="a"/>
+            <PostShort v-for="a in articles" :key="a.id" :article="a"/>
         </div>
     </section>
 </template>
