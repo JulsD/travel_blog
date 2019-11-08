@@ -1,31 +1,18 @@
-import Vue from 'vue';
+import Vue from 'vue'
 import Vuex from 'vuex'
-import { vuexfireMutations, firestoreAction } from 'vuexfire'
-import { db } from '../firebase'
+import { vuexfireMutations } from 'vuexfire'
 
 import auth from './auth'
+import articles from './articles'
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
-    auth
+    auth,
+    articles
+  },
+  mutations: {
+    ...vuexfireMutations
   }
-    // state: {
-    //     count: 0
-    //   },
-    //   mutations: {
-    //     increment (state) {
-    //       state.count++
-    //     },
-    //     ...vuexfireMutations
-    //   },
-    //   actions: {
-    //     bindArticles: firestoreAction(({ bindFirestoreRef }) => {
-    //       return bindFirestoreRef('articles', db.collection('articles'))
-    //     }),
-    //     unbindArticles: firestoreAction(({ unbindFirestoreRef }) => {
-    //       unbindFirestoreRef('articles')
-    //     })
-    //   }
 })

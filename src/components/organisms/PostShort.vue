@@ -3,10 +3,10 @@
   <a href="/" class="post-short-link post-short-wrapper">
     <article class="post-short">
         <header class="post-short-header">
-            <h1 class="post-short-title">{{title}}</h1>
-            <span class="post-short-date">{{date}}</span>
+            <h1 class="post-short-title">{{article.title}}</h1>
+            <span class="post-short-date">{{article.created_at}}</span>
         </header>
-        <p class="post-short-description">{{description}}</p>
+        <p class="post-short-description">{{article.description}}</p>
         <a href="/" class="button post-short-more post-short-link">Read more</a>
     </article>
   </a>
@@ -14,11 +14,10 @@
 
 <script>
 export default {
-    data: () => {
-        return {
-            title: 'Top 10 tips in Newerland',
-            date: new Date(),
-            description: 'Short description with key points of the article Short description with key points of the article Short description with key points of the article Short description with key points of the article'
+    props: {
+        'article': {
+            type: Object,
+            required: true
         }
     }
 }
