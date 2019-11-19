@@ -1,18 +1,18 @@
 // Home
 <template>
   <PageWrapper>
-    <PostList />
+    <ArticleList />
   </PageWrapper>
 </template>
 
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex'
-import PostList from '../components/organisms/PostList.vue'
+import ArticleList from '../components/organisms/ArticleList.vue'
 import PageWrapper from './PageWrapper.vue'
 
 export default {
   components: {
-    PostList,
+    ArticleList,
     PageWrapper
   },
 }

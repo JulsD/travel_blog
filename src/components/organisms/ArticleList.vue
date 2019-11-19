@@ -1,24 +1,24 @@
-// PostList
+// ArticleList
 
 <template>
     <section>
-        <h1>Posts</h1>
+        <h1>Articles</h1>
         <div>
-            <PostShort v-for="a in articles" :key="a.id" :article="a"/>
+            <ArticleShort v-for="a in articles" :key="a.id" :article="a"/>
         </div>
     </section>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import PostShort from './PostShort.vue'
+import ArticleShort from './ArticleShort.vue'
 export default {
     mounted() {
         this.init()
     },
     computed: mapState('articles', ['articles']),
     components: {
-        PostShort
+        ArticleShort
     },
     methods: mapActions('articles', ['init'])
 }

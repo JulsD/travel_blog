@@ -1,13 +1,13 @@
-// PostShort.component.vue
+// ArticleShort.component.vue
 <template>
-  <a href="/" class="post-short-link post-short-wrapper">
-    <article class="post-short">
-        <header class="post-short-header">
-            <h1 class="post-short-title">{{article.title}}</h1>
-            <span class="post-short-date">{{article.created_at}}</span>
+  <a href="/" class="article-short-link article-short-wrapper">
+    <article class="article-short">
+        <header class="article-short-header">
+            <h1 class="article-short-title">{{article.title}}</h1>
+            <span class="article-short-date">{{article.created_at}}</span>
         </header>
-        <p class="post-short-description">{{article.description}}</p>
-        <router-link :to="{ name: 'post', params: { name: article.title } }" class="button post-short-more post-short-link">Read more</router-link>
+        <p class="article-short-description">{{article.description}}</p>
+        <router-link :to="{ name: 'article', params: { name: article.title } }" class="button article-short-more article-short-link">Read more</router-link>
     </article>
   </a>
 </template>
@@ -24,23 +24,23 @@ export default {
 </script>
 
 <style>
-.post-short-link,
-.post-short-link:active,
-.post-short-link:visited {
+.article-short-link,
+.article-short-link:active,
+.article-short-link:visited {
  text-decoration: none;
  color: inherit;
 }
 
-.post-short-wrapper {
+.article-short-wrapper {
     display: block;
     margin-bottom: var(--gap-4);
 }
 
-.post-short-wrapper:last-child {
+.article-short-wrapper:last-child {
     margin-bottom: 0;
 }
 
-.post-short {
+.article-short {
     padding: var(--gap-3) var(--gap-4);
     border: 1px dashed transparent;
     border-radius: calc(var(--gap-1)/2);
@@ -48,33 +48,33 @@ export default {
     transition: border-color .3s ease-out;
 }
 
-.post-short-link:hover .post-short {
+.article-short-link:hover .article-short {
     border-color: var(--primary-color-2-shade);
 }
 
-.post-short-header {
+.article-short-header {
     margin-bottom: var(--gap-2);
 }
 
-.post-short-title {
+.article-short-title {
     margin: var(--gap-1) 0;
     color: var(--text-color-dark);
     font-size: 1.2rem;
 }
 
-.post-short-date {
+.article-short-date {
     color: var(--primary-color-2-shade);
     font-size: .9rem;
 }
 
-.post-short-description {
+.article-short-description {
     margin-bottom: var(--gap-1);
     padding: var(--gap-1);
     border-radius: calc(var(--gap-1)/2);
     background-color: var(--primary-color-1-tint);
 }
 
-.post-short-more {
+.article-short-more {
     display: inline-block;
     padding: var(--gap-1);
     border-radius: calc(var(--gap-1)/2);
@@ -82,7 +82,7 @@ export default {
     transition: background-color .3s ease-out;
 }
 
-.post-short-more:hover {
+.article-short-more:hover {
     background-color: var(--secondary-color-2);
 }
 </style>
