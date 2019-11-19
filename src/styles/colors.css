@@ -18,4 +18,9 @@
     
     --secondary-color-1: #edfef9;
     --secondary-color-2: #c7fcec;
+
+    --white-color: #fff;
+    --white-color-op40: hsla(0, 0%, 100%, 40%);
+    
+    --black-color: #000;
 }

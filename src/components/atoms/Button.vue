@@ -46,7 +46,7 @@ export default {
 
     .btn:not(:disabled):hover {
         text-shadow: none;
-        background-color: var(--primary-color-2-op10);
+        background-color: var(--white-color-op40);
         border-color: var(--primary-color-2-shade);
         box-shadow: 1px 1px 2px var(--text-color-dark);
     }
