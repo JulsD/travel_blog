@@ -1,14 +1,9 @@
 // Button.vue
 
 <template>
-    <div>
-        <button class="btn" @click="onClick" v-if="btnType === 'button'">
-            <slot>Button</slot>
-        </button>
-        <a class="btn" v-if="btnType === 'link'">
-            <slot>Button</slot>
-        </a>
-    </div>
+    <button class="btn">
+        <slot>Button</slot>
+    </button>
 </template>
 
 <script>
@@ -16,10 +11,6 @@ export default {
     props: {
         onClick: {
             type: Function
-        },
-        btnType: {
-            type: String,
-            default: 'button'
         }
   }
 }
