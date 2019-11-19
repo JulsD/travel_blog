@@ -48,7 +48,7 @@ export default {
         text-shadow: none;
         background-color: var(--primary-color-2-op10);
         border-color: var(--primary-color-2-shade);
-        box-shadow: inset -1px -1px var(--primary-color-2-shade);
+        box-shadow: 1px 1px 2px var(--text-color-dark);
     }
 
     .btn:disabled {
