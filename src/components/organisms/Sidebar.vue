@@ -5,7 +5,10 @@
         <form class="search-form"></form>
         <div>
             <h2>Tags</h2>
-            <span v-for="tag in tags" :key="tag">{{tag}}</span>
+            <router-link v-for="tag in tags"
+                         :key="tag.id"
+                         :to="{ name: 'new-article', params: { name: tag.name } }"
+                         class="tag">{{tag.name}}</router-link>
         </div>
         <div>Best for the last time</div>
       </div>
@@ -13,12 +16,13 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 export default {
-    data: () => {
-        return {
-            tags: ['norway', 'netherlands', 'ukraine', 'amsterdam']
-        }
-    }
+    mounted() {
+        this.init()
+    },
+    computed: mapState('tags', ['tags']),
+    methods: mapActions('tags', ['init'])
 }
 </script>
 
@@ -27,5 +31,24 @@ export default {
     background-color: var(--primary-color-2-tint);
     border-radius: calc(var(--gap-1)/2);
     padding: var(--gap-3);
+}
+
+.tag {
+    text-decoration: none;
+    display: inline-block;
+    padding: calc(var(--gap-1)/2);
+    margin: 0 calc(var(--gap-1)/2) calc(var(--gap-1)/2) 0;
+    border-radius: var(--radius);
+    background-color: var(--white-color-op40);
+    color: var(--text-color-dark);
+    transition-duration: .3s;
+    transition-property: background-color, color;
+    transition-timing-function: linear;
+}
+
+.tag:hover {
+    text-decoration: none;
+    background-color: var(--primary-color-2-dark);
+    color: var(--text-color-light);
 }
 </style>

@@ -1,6 +1,6 @@
 // ArticleForm
 <template>
-  <form class="article_form" @submit="onSubmit()">
+  <form class="article_form" @submit.prevent="onSubmit()">
       <fieldset>
             <legend>Article Form</legend>
             <label for="article_title">Article title</label>
@@ -21,7 +21,7 @@
 
 <script>
 import Button from '../atoms/Button';
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
     data: () => ({
@@ -37,12 +37,10 @@ export default {
         Button
     },
     methods: {
-        createArticle() {
-
-        },
+        ...mapActions('article', ['createArticle']),
         async onSubmit() {
             if(this.article.title && (this.article.description || this.article.body || this.article.url)) {
-                await this.createArticle()
+                await this.createArticle(this.article)
             }
         }
     }
