@@ -29,7 +29,6 @@ export default {
     font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
-    text-shadow: 1px 1px var(--text-color-dark);
 }
 
 .logo .ice-cream-wrapper {
@@ -37,7 +36,21 @@ export default {
     margin-right: var(--gap-1);
 }
 
-.logo .ice-cream-wrapper {
-    margin-right: 1em;
+.logo:hover {
+    text-decoration: none;
+}
+
+.logo:hover .ice-cream-ball {
+    --a-duration: 1s;
+    --a-delay: 0s;
+    animation: swing-vartical var(--a-duration) linear infinite var(--a-delay) alternate;
+}
+.logo:hover .ice-cream-ball:nth-child(2) {
+    --a-duration: 2s;
+    --a-delay: .1s;
+}
+.logo:hover .ice-cream-ball:nth-child(2) {
+    --a-duration: .5s;
+    --a-delay: .2s;
 }
 </style>
