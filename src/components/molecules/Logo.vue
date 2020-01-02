@@ -1,17 +1,22 @@
 // Logo
 <template>
   <a href="/home" class="logo">
-    <span class="icon-earth "></span>
+    <LogoImage></LogoImage>
     <span>{{logoTitle}}</span>
   </a>
 </template>
 
 <script>
+import LogoImage from '../atoms/LogoImage.vue';
+
 export default {
     data: () => {
         return {
             logoTitle: 'Travel Blog'
         }
+    },
+    components: {
+        LogoImage
     }
 }
 </script>
@@ -19,7 +24,7 @@ export default {
 <style>
 .logo {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     color: var(--text-color);
     font-size: 1.5rem;
     font-weight: bold;
@@ -30,37 +35,7 @@ export default {
     text-decoration: none;
 }
 
-.logo [class^="icon-"] {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 45px;
-    width: 45px;
-    box-sizing: border-box;
-    font-size: inherit;
-    color: inherit;
-    padding: var(--gap-1);
-    position: relative;
-}
-
-.logo [class^="icon-"]:after {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 50%;
-    border: 2px dashed var(--text-color);
-}
-
-.logo:hover [class^="icon-"]:after {
-    animation: 
-    rotate-gorizontal 3s ease-out infinite .2s alternate-reverse;
-}
-
-.logo [class^="icon-"] + span {
-    margin-left: var(--gap-1);
+.logo .ice-cream-wrapper {
+    margin-right: 1em;
 }
 </style>
