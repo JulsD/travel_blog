@@ -12,7 +12,9 @@
             <p>{{section.body}}</p>
         </section>
     </article>
-    <CommentForm :article-title="article.title" :on-submit="createComment"/>
+    <CommentForm :article-title="article.title" 
+                 :on-submit="createComment" 
+                 v-if="isLoggedIn"/>
     <p v-for="(comment, index) in comments" :key="index">{{comment}}</p>
 </PageWrapper>
 </template>
@@ -29,6 +31,7 @@ export default {
     },
     computed: {
         ...mapState('article', ['article']),
+        ...mapState('auth', ['isLoggedIn']),
         comments() {
             return this.article.comments || []
         },
