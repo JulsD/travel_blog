@@ -13,8 +13,7 @@
         </section>
     </article>
     <CommentForm :article-title="article.title" 
-                 :on-submit="createComment" 
-                 v-if="isLoggedIn"/>
+                 :on-submit="createComment" />
     <p v-for="(comment, index) in comments" :key="index">{{comment}}</p>
 </PageWrapper>
 </template>
