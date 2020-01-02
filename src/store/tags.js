@@ -2,12 +2,12 @@ import { firestoreAction } from 'vuexfire'
 import db from '../db'
 
 const state = {
-    articles: [],
+    tags: [],
 };
 
 const actions = {
     init: firestoreAction(({ bindFirestoreRef }) => {
-            return bindFirestoreRef('articles', db.collection('articles'))
+            return bindFirestoreRef('tags', db.collection('tags'))
     }),
 }
 
