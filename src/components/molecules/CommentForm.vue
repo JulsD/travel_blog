@@ -1,6 +1,6 @@
 // CommentForm
 <template>
-  <form class="comment_form" @submit.prevent="onSubmit()">
+  <form class="comment_form" @submit.prevent="onSubmit()" v-if="isLoggedIn">
       <fieldset>
             <legend>Leave a comment</legend>
             <label for="comment_author">Your name</label>
@@ -11,6 +11,7 @@
       </fieldset>
       <Button type="submit" :onClick="onSubmit">Add comment</Button>
     </form>
+    <p v-else>Sign Up or Log In to leave a comment</p>
 </template>
 
 <script>
@@ -33,7 +34,7 @@ export default {
         }
     },
     computed: {
-        ...mapState('auth', ['user']),
+        ...mapState('auth', ['user', 'isLoggedIn']),
         author() {
             return this.user.name || this.comment.author
         }
