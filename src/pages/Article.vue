@@ -18,15 +18,18 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 import PageWrapper from './PageWrapper.vue'
 
 export default {
     mounted() {
-        this.init(this.$route.params.name);
+        this.initArticle(this.$route.params.name);
     },
-    computed: mapState('article', ['article']),
-    methods: mapActions('article', ['init']),
+    computed: {
+        ...mapState('article', ['articles']),
+        ...mapGetters('article', ['article'])
+    },
+    methods: mapActions('article', ['initArticle']),
     components: {
         PageWrapper
   },
