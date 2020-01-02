@@ -1,27 +1,28 @@
-import { firestoreAction } from 'vuexfire'
+import { firestoreAction, firebaseAction } from 'vuexfire'
 import db from '../db'
 
 const articles = db.collection('articles');
 
 const state = {
-    articles: [],
+    article: {}
 };
 
 const getters = {
-    article: (state) => state.articles[0] ? state.articles[0] : {}
+    comments: (state) => state.article.comments || []
 }
 
 const actions = {
-    // async createArticle(_, article) {
-    //     const result = articles.doc();
-    //     article.id = result.id;
-    //     // article.user_id = 
-    //     // article.created_at = 
-    //     // article.updated_at = 
-    //     articles.doc(article.id).set(article);
-    // },
-    initArticle: firestoreAction(({ bindFirestoreRef }, name) => {
-        return bindFirestoreRef('articles', articles.where('name', '==', name))
+    async createComment(_, comment) {
+        const result = comment.doc();
+        comment.id = result.id;
+        // comment.user_id = 
+        // comment.created_at = 
+        // comment.updated_at = 
+        await comment.doc(comment.id).set(comment);
+    },
+    initArticle: firestoreAction(({ bindFirestoreRef }, id) => {
+        // const result = bindFirestoreRef('articles', articles.where('name', '==', name))
+        return bindFirestoreRef('article', articles.doc(id))
     })
 }
 
