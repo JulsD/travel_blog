@@ -9,6 +9,7 @@
     --primary-color-2-dark: #224e49;
 
     --primary-color-2-op10: hsla(180, 53.3%, 63.9%, 10%);
+    --primary-color-1-op25: hsla(57.4, 100%, 90.8%, 25%);
 
     --text-color: var(--primary-color-2-shade);
     --text-color-light: var(--primary-color-1-tint);

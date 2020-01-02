@@ -7,7 +7,7 @@
             <span class="article-short-date">{{article.created_at}}</span>
         </header>
         <p class="article-short-description">{{article.description}}</p>
-        <router-link :to="{ name: 'article', params: { name: article.title } }" class="button article-short-more article-short-link">Read more</router-link>
+        <router-link :to="{ name: 'article', params: { id: article.id } }" class="button article-short-more article-short-link">Read more</router-link>
     </article>
   </a>
 </template>
