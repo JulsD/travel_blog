@@ -1,18 +1,19 @@
 // Demo
 <template>
-  <main>
+  <PageWrapper>
     {{count}}
-  <button @click="increment()">Increment</button>     
-  <section>
-  <h1>Just starting the demo block</h1>
-  <p>Going to add some text here</p>
-  <div>Demo {{ $route.params.id }}</div>
-  </section>
-  </main>
+    <button @click="increment()">Increment</button>     
+    <section>
+    <h1>Just starting the demo block</h1>
+    <p>Going to add some text here</p>
+    <div>Demo {{ $route.params.id }}</div>
+    </section>
+  </PageWrapper>
 </template>
 
 <script>
 import { mapState, mapMutations } from 'vuex'
+import PageWrapper from './PageWrapper.vue'
 
 export default {
   computed: {
@@ -31,8 +32,11 @@ export default {
     }
   },
   ...mapMutations([
-      'increment'
-    ])
+    'increment'
+  ]),
+  components: {
+    PageWrapper
+  }
 }
 </script>
 

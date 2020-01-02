@@ -20,15 +20,15 @@ export default {
 
 <style>
 .ice-cream-wrapper {
-    --opacity: .9;
+    --opacity: .93;
     position: relative;
     font-size: 8px;
 }
 
 .ice-cream-cup {
-    --cup-color: hsla(214, 100%, 84%, var(--opacity));
-    --cup-color-l: hsla(214, 100%, 100%, var(--opacity));
-    --cup-color-r: hsla(214, 100%, 60%, var(--opacity));
+    --cup-color: hsla(178, 25%, 77%, var(--opacity));
+    --cup-color-l: hsla(178, 25%, 99%, var(--opacity));
+    --cup-color-r: hsla(178, 25%, 60%, var(--opacity));
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,10 +43,11 @@ export default {
     width: 4em;
     height: 2em;
     background-color: var(--cup-color);
+    border-right: 1px solid var(--primary-color-2-shade);
     border-radius: 0 0 8em 8em;
     box-shadow: 
-                inset 4px 0px 2px var(--cup-color-l), 
-                inset -5px -5px 10px var(--cup-color-r);
+                inset 3px 0px var(--cup-color-l), 
+                inset -5px -3px var(--cup-color-r);
 }
 
 .ice-cream-cup:after {
@@ -55,10 +56,12 @@ export default {
     width: 3em;
     height: .5em;
     background-color: var(--cup-color);
+    border-right: 1px solid var(--primary-color-2-shade);
+    border-bottom: 1px solid var(--primary-color-2-shade);
     border-radius: 100em 100em 0 0;
     box-shadow: 
-                inset 5px 0px 2px var(--cup-color-l), 
-                inset -5px 0px 10px var(--cup-color-r);
+                inset 5px 1px var(--cup-color-l), 
+                inset -5px 0px var(--cup-color-r);
 }
 
 .ice-cream-cup-leg {
@@ -66,11 +69,12 @@ export default {
     display: block;
     justify-content: space-between;
     width: 0.5em;
-    height: 1.5em;
+    height: 1em;
     background-color: var(--cup-color);
+    border-right: 1px solid var(--primary-color-2-shade);
     box-shadow: 
-                inset 4px 0px 2px var(--cup-color-l), 
-                inset -5px -5px 10px var(--cup-color-r);
+                inset 3px 0px var(--cup-color-l), 
+                inset -3px -1px var(--cup-color-r);
 }
 
 .ice-cream-balls {
@@ -80,42 +84,46 @@ export default {
 }
 
 .ice-cream-ball {
-    --box-shadow-color-r: hsla(359, 100%, 25%, var(--opacity));
-    --box-shadow-color-l: hsla(359, 100%, 75%, var(--opacity));
+    --box-shadow-color-r: '';
+    --box-shadow-color-l: '';
     content: '';
     display: block; 
     border-radius: 50%;
     width: 2em;
     height: 2em;
     position: absolute;
-    /* border: 1px solid var(--boll-color); */
     box-shadow: 
-                inset 3px 3px 2px var(--box-shadow-color-l), 
-                inset -5px -5px 10px var(--box-shadow-color-r);
+                inset 3px 3px var(--box-shadow-color-l), 
+                inset -5px -5px var(--box-shadow-color-r);
+}
+
+.ice-cream-ball::after {
+    content: '';
+    display: block; 
 }
 
 .ice-cream-ball:nth-child(1) {
-    --box-shadow-color-r: hsla(359, 100%, 25%, var(--opacity));
-    --box-shadow-color-l: hsla(359, 100%, 75%, var(--opacity));
-    background-color: hsla(359, 100%, 50%, var(--opacity));
+    --box-shadow-color-r: hsl(346, 100%, 25%);
+    --box-shadow-color-l: hsl(346, 100%, 75%);
+    background-color: hsl(346, 100%, 51%);
     z-index: 1;
     top: 0;
     left: calc(50% - 1em);
 }
 
 .ice-cream-ball:nth-child(2) {
-    --box-shadow-color-r: hsla(110, 27%, 25%, var(--opacity));
-    --box-shadow-color-l: hsla(110, 27%, 75%, var(--opacity));
-    background-color: hsla(110, 27%, 49%, var(--opacity));
+    --box-shadow-color-r: hsl(80, 60%, 25%);
+    --box-shadow-color-l: hsl(80, 60%, 75%);
+    background-color: hsl(80, 60%, 35%);
     z-index: 2;
     bottom: -.8em;
     left: .1em;
 }
 
 .ice-cream-ball:nth-child(3) {
-    --box-shadow-color-r: hsla(63, 99%, 25%, var(--opacity));
-    --box-shadow-color-l: hsla(63, 99%, 95%, var(--opacity));
-    background-color: hsla(63, 99%, 71%, var(--opacity));
+    --box-shadow-color-r: hsl(45, 100%, 25%);
+    --box-shadow-color-l: hsl(45, 100%, 95%);
+    background-color: hsl(45, 100%, 51%);
     z-index: 3;
     bottom: -1em;
     right: .1em;

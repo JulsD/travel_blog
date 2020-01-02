@@ -29,10 +29,12 @@ export default {
     font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
+    text-shadow: 1px 1px var(--text-color-dark);
 }
 
-.logo:hover {
-    text-decoration: none;
+.logo .ice-cream-wrapper {
+    font-size: 12px;
+    margin-right: var(--gap-1);
 }
 
 .logo .ice-cream-wrapper {

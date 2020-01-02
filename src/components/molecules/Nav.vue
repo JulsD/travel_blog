@@ -8,8 +8,8 @@
             <li>
                 <div class="auth auth-container">
                     <div class="portret" v-if="user"><img :src="user.image" :alt="user.name"></div>
-                    <button v-if="!isLoggedIn" @click="login()">Login with Google</button>
-                    <button v-if="isLoggedIn" @click="logout()">Logout</button>
+                    <Button v-if="!isLoggedIn" :onClick="login" :btnType="'link'">Login with Google</Button>
+                    <Button v-if="isLoggedIn" :onClick="logout">Logout</Button>
                 </div>
             </li>
         </ul>
@@ -18,6 +18,7 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
+import Button from '../atoms/Button.vue'
 
 export default {
     data: () => {
@@ -43,6 +44,9 @@ export default {
     },
     methods: {
         ...mapActions('auth', ['login', 'logout'])
+    },
+    components: {
+        Button
     }
 }
 </script>
@@ -56,10 +60,12 @@ nav ul {
     list-style: none;
     display: flex;
     align-items: center;
+    margin: 0;
 }
 
 nav li {
     margin-left: var(--gap-1);
+    font-size: 1rem;
 }
 
 nav li:first-child {
@@ -69,18 +75,17 @@ nav li:first-child {
 nav a {
     padding: var(--gap-1);
     text-decoration: none;
-    transition: color .3s ease-out;
-    font-size: 1.1rem;
-    font-weight: 500;
+    transition: text-shadow .3s ease-out;
+    text-shadow: 1px 1px transparent;
 }
 
 nav a,
 nav a:visited {
-    color: var(--grey-color);
+    color: var(--text-color);
 }
 
 nav a:hover {
-    color: var(--text-color);
+    text-shadow: 1px 1px var(--text-color-dark);
 }
 
 .auth-container {
