@@ -1,5 +1,4 @@
 import firebase from './../firebase'
-import db from './../db'
 import 'firebase/auth'
 import 'firebase/firestore'
 

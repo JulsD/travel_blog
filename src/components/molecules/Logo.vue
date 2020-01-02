@@ -1,6 +1,6 @@
 // Logo
 <template>
-  <a href="/home" class="logo">
+  <a href="/" class="logo">
     <LogoImage></LogoImage>
     <span>{{logoTitle}}</span>
   </a>
