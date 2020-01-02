@@ -14,12 +14,12 @@ export default new Vuex.Store({
     // state: {
     //     count: 0
     //   },
-    //   mutations: {
+      // mutations: {
     //     increment (state) {
     //       state.count++
     //     },
-    //     ...vuexfireMutations
-    //   },
+        // ...vuexfireMutations 
+      // },
     //   actions: {
     //     bindArticles: firestoreAction(({ bindFirestoreRef }) => {
     //       return bindFirestoreRef('articles', db.collection('articles'))
@@ -28,4 +28,4 @@ export default new Vuex.Store({
     //       unbindFirestoreRef('articles')
     //     })
     //   }
-})
+});
