@@ -12,34 +12,29 @@
             <p>{{section.body}}</p>
         </section>
     </article>
-    <CommentForm :article-title="article.title" 
-                 :on-submit="createComment" />
+    <CommentForm />
     <p v-for="(comment, index) in comments" :key="index">{{comment}}</p>
 </PageWrapper>
 </template>
 
 <script>
 import moment from 'moment';
-import { mapState, mapGetters, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import PageWrapper from './PageWrapper.vue'
 import CommentForm from '../components/molecules/CommentForm.vue'
 
 export default {
     mounted() {
         this.initArticle(this.$route.params.id);
+        this.initComments(this.$route.params.id);
     },
     computed: {
-        ...mapState('article', ['article']),
-        ...mapState('auth', ['isLoggedIn']),
-        comments() {
-            return this.article.comments || []
-        },
+        ...mapState('article', ['article', 'comments']),
         date() {
             return this.article && this.article.created_at ? moment(this.article.created_at.seconds*1000).format("Do MMM YY") : null;
         }
-        // ...mapGetters('comments', ['article'])
     },
-    methods: mapActions('article', ['initArticle', 'createComment']),
+    methods: mapActions('article', ['initArticle', 'initComments']),
     components: {
         PageWrapper,
         CommentForm

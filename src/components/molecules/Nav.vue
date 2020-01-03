@@ -8,8 +8,8 @@
             <li>
                 <div class="auth auth-container">
                     <div class="portret" v-if="user"><img :src="user.image" :alt="user.name"></div>
-                    <Button v-if="!isLoggedIn" :onClick="login" :btnType="'link'">Login with Google</Button>
-                    <Button v-if="isLoggedIn" :onClick="logout">Logout</Button>
+                    <Button v-if="!isLoggedIn" @click="login" :btnType="'link'">Login with Google</Button>
+                    <Button v-if="isLoggedIn" @click="logout">Logout</Button>
                 </div>
             </li>
         </ul>
