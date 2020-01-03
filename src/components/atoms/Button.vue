@@ -1,7 +1,7 @@
 // Button.vue
 
 <template>
-    <button class="btn">
+    <button class="btn" @click="$emit('click')">
         <slot>Button</slot>
     </button>
 </template>
