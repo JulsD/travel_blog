@@ -9,7 +9,7 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 import PageWrapper from './PageWrapper.vue'
-import ArticleForm from '../components/molecules/ArticleForm.vue'
+import ArticleForm from '../components/organisms/ArticleForm.vue'
 
 export default {
     mounted() {

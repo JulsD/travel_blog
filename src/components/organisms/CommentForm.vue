@@ -1,20 +1,24 @@
 // CommentForm
 <template>
-  <form class="comment_form" @submit.prevent="addComment" v-if="isLoggedIn">
-      <fieldset>
-            <legend>Leave a comment</legend>
-            <label for="comment_author">Your name</label>
-            <input type="text"
-                   id="comment_author"
-                   :value="this.user.name"
-                   disabled />
+    <div>
+        <Button @click="toggleCommentForm" v-if="isLoggedIn && !expanded">Comment</Button>
+        <form class="comment_form" @submit.prevent="addComment" v-else-if="isLoggedIn && expanded">
+            <fieldset>
+                    <legend>Leave a comment</legend>
+                    <label for="comment_author">Your name</label>
+                    <input type="text"
+                        id="comment_author"
+                        :value="this.user.name"
+                        disabled />
 
-            <label for="comment_body">Comment text</label>
-            <textarea id="comment_body" v-model="comment.body"/>
-      </fieldset>
-      <Button type="submit">Create comment</Button>
-    </form>
-    <p v-else>Sign Up or Log In to leave a comment</p>
+                    <label for="comment_body">Comment text</label>
+                    <textarea id="comment_body" v-model="comment.body"/>
+            </fieldset>
+            <Button type="submit">Create comment</Button>
+            <Button @click="toggleCommentForm">Cancel</Button>
+        </form>
+        <p v-else>Sign Up or Log In to leave a comment</p>
+    </div>
 </template>
 
 <script>
@@ -23,6 +27,7 @@ import { mapState, mapActions } from 'vuex';
 
 export default {
     data: () => ({
+        expanded: false,
         comment: {
             body: ''
         }
@@ -38,6 +43,11 @@ export default {
                 author_name: this.user.name
             }
             this.createComment(newComment);
+            this.toggleCommentForm()
+        },
+        toggleCommentForm(){
+            this.expanded = !this.expanded;
+            if (!this.expanded) this.comment.body = ''
         }
     },
     components: {
