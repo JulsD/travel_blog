@@ -13,7 +13,9 @@
         </section>
     </article>
     <CommentForm />
-    <p v-for="(comment, index) in comments" :key="index">{{comment}}</p>
+    <div class="comments_list">
+        <Comment v-for="(comment, index) in comments" :key="index" :comment="comment" />
+    </div>
 </PageWrapper>
 </template>
 
@@ -21,7 +23,8 @@
 import moment from 'moment';
 import { mapState, mapActions } from 'vuex'
 import PageWrapper from './PageWrapper.vue'
-import CommentForm from '../components/molecules/CommentForm.vue'
+import CommentForm from '../components/organisms/CommentForm.vue'
+import Comment from '../components/organisms/Comment.vue'
 
 export default {
     mounted() {
@@ -37,7 +40,8 @@ export default {
     methods: mapActions('article', ['initArticle', 'initComments']),
     components: {
         PageWrapper,
-        CommentForm
+        CommentForm,
+        Comment
   },
 }
 </script>
