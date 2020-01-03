@@ -61,7 +61,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Travel blog',
       hash: true,
-      template: './src/index.html'
+      template: './src/index.html',
+      favicon: './src/assets/favicon.png'
     }),
     new CleanWebpackPlugin()
   ]
