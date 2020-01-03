@@ -21,14 +21,18 @@ export default {
     },
     computed: {
         created_date() {
-            return moment(this.comment.created_at.seconds*1000).format('Do MMMM YYYY, h:mm a');
+            if (this.comment.created_at) {
+                return moment(this.comment.created_at.seconds*1000).format('Do MMMM YYYY, h:mm a');
+            }
+
+            return;
         },
         updated_date() {
-            if (this.comment.created_at.seconds !== this.comment.updated_at.seconds) {
+            if (this.comment.created_at && this.comment.updated_at && this.comment.created_at.seconds !== this.comment.updated_at.seconds) {
                 return moment(this.comment.updated_at.seconds*1000).format('Do MMMM YYYY, h:mm a');
-            } else {
-                return;
             }
+
+            return;
         }
     },
     components: {
