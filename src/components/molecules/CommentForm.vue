@@ -1,15 +1,18 @@
 // CommentForm
 <template>
-  <form class="comment_form" @submit.prevent="onSubmit()" v-if="isLoggedIn">
+  <form class="comment_form" @submit.prevent="addComment" v-if="isLoggedIn">
       <fieldset>
             <legend>Leave a comment</legend>
             <label for="comment_author">Your name</label>
-            <input type="text" id="comment_author" v-model="this.author" required />
+            <input type="text"
+                   id="comment_author"
+                   :value="this.user.name"
+                   disabled />
 
-            <label for="comment_body">Comment to {{articleTitle}}</label>
+            <label for="comment_body">Comment text</label>
             <textarea id="comment_body" v-model="comment.body"/>
       </fieldset>
-      <Button type="submit" :onClick="onSubmit">Add comment</Button>
+      <Button type="submit">Create comment</Button>
     </form>
     <p v-else>Sign Up or Log In to leave a comment</p>
 </template>
@@ -21,22 +24,20 @@ import { mapState, mapActions } from 'vuex';
 export default {
     data: () => ({
         comment: {
-            author: '',
             body: ''
         }
     }),
-    props: {
-        articleTitle: {
-            type: String
-        },
-        onSubmit: {
-            type: Function
-        }
-    },
     computed: {
-        ...mapState('auth', ['user', 'isLoggedIn']),
-        author() {
-            return this.user.name || this.comment.author
+        ...mapState('auth', ['user', 'isLoggedIn'])
+    },
+    methods: {
+        ...mapActions('article', ['createComment']),
+        addComment() {
+            let newComment = {
+                body: this.comment.body,
+                author_name: this.user.name
+            }
+            this.createComment(newComment);
         }
     },
     components: {
