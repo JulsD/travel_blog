@@ -2,6 +2,10 @@
     --radius: calc(var(--gap-1)/2);
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
     font-size: 14px;

@@ -16,6 +16,7 @@
     --text-color-dark: var(--primary-color-2-dark);
 
     --grey-color: #a2a185;
+    --grey-color-op10: hsla(58, 13%, 58%, 10%);
     
     --secondary-color-1: #edfef9;
     --secondary-color-2: #c7fcec;
