@@ -1,11 +1,15 @@
 // Comment
 <template>
-  <div class="comment">
-      <h3>{{comment.author_name}}</h3>
+  <section class="comment">
+      <header>
+        <h3>{{comment.author_name}}</h3>
+        <div>
+            <span>Created {{created_date}}</span>
+            <span v-if="updated_date">Updated {{updated_date}}</span>
+        </div>
+      </header>
       <p>{{comment.body}}</p>
-      <span>Created {{created_date}}</span>
-      <span v-if="updated_date">Updated {{updated_date}}</span>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -54,6 +58,11 @@ export default {
 
 .comment:last-child {
     margin-bottom: 0;
+}
+
+.comment header {
+    display: flex;
+    justify-content: space-between;
 }
 
 .comment h3,
