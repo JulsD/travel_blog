@@ -1,16 +1,13 @@
 // Nav
 <template>
     <nav>
-        <ul>
-            <li v-for="link in links" :key="link.title">
-                <router-link :to="link.href">{{ link.title }}</router-link>
+        <ul class="nav_list">
+            <li v-for="link in links" :key="link.title" class="nav_list_item">
+                <router-link :to="link.href" class="nav_link">{{ link.title }}</router-link>
             </li>
-            <li>
-                <div class="auth auth-container">
-                    <div class="portret" v-if="user"><img :src="user.image" :alt="user.name"></div>
-                    <Button v-if="!isLoggedIn" @click="login" :btnType="'link'">Login with Google</Button>
-                    <Button v-if="isLoggedIn" @click="logout">Logout</Button>
-                </div>
+            <li class="nav_list_item">
+                <Button v-if="!isLoggedIn" @click="login">Login with Google</Button>
+                <Menu v-if="isLoggedIn" />
             </li>
         </ul>
     </nav>
@@ -19,6 +16,7 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 import Button from '../atoms/Button.vue'
+import Menu from './Menu.vue'
 
 export default {
     data: () => {
@@ -46,7 +44,8 @@ export default {
         ...mapActions('auth', ['login', 'logout'])
     },
     components: {
-        Button
+        Button,
+        Menu
     }
 }
 </script>
@@ -56,52 +55,35 @@ nav {
     color: var(--primary-color-2);
 }
 
-nav ul {
+nav .nav_list {
     list-style: none;
     display: flex;
     align-items: center;
     margin: 0;
 }
 
-nav li {
+nav .nav_list_item {
     margin-left: var(--gap-1);
     font-size: 1rem;
 }
 
-nav li:first-child {
+nav .nav_list_item:first-child {
     margin-left: 0;
 }
 
-nav a {
+nav .nav_link {
     padding: var(--gap-1);
     text-decoration: none;
     transition: text-shadow .3s ease-out;
     text-shadow: 1px 1px transparent;
 }
 
-nav a,
-nav a:visited {
+nav .nav_link,
+nav .nav_link:visited {
     color: var(--text-color);
 }
 
-nav a:hover {
+nav .nav_link:hover {
     text-shadow: 1px 1px var(--text-color-dark);
-}
-
-.auth-container {
-    display: flex;
-    align-items: center;
-}
-.auth-container .portret {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    overflow: hidden;
-}
-
-.auth-container .portret img {
-    display: block;
-    max-width: 100%;
-    max-height: 100%;
 }
 </style>

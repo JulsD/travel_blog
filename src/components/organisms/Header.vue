@@ -11,7 +11,7 @@
 
 <script>
 import Logo from '../molecules/Logo.vue';
-import Nav from '../molecules/Nav.vue';
+import Nav from './Nav.vue';
 import Citation from '../molecules/Citation.vue';
 
 export default {
@@ -31,7 +31,6 @@ export default {
 #header {
     background-color: var(--primary-color-1);
     color: #416165;
-    overflow: hidden;
 }
 
 .header-wrapper {
