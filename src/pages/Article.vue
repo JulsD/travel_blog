@@ -12,7 +12,7 @@
             <p>{{section.body}}</p>
         </section>
     </article>
-    <CommentForm />
+    <CommentForm :article_id="article.id"/>
     <div class="comments_list">
         <Comment v-for="(comment, index) in comments" :key="index" :comment="comment" />
     </div>
@@ -32,12 +32,16 @@ export default {
         this.initComments(this.$route.params.id);
     },
     computed: {
-        ...mapState('article', ['article', 'comments']),
+        ...mapState('article', ['article']),
+        ...mapState('comments', ['comments']),
         date() {
             return this.article && this.article.created_at ? moment(this.article.created_at.seconds*1000).format("Do MMM YY") : null;
         }
     },
-    methods: mapActions('article', ['initArticle', 'initComments']),
+    methods: {
+        ...mapActions('article', ['initArticle']),
+        ...mapActions('comments', ['initComments'])
+    },
     components: {
         PageWrapper,
         CommentForm,

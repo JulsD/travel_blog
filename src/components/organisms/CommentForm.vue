@@ -32,15 +32,21 @@ export default {
             body: ''
         }
     }),
+    props: {
+        article_id: {
+            type: String
+        }
+    },
     computed: {
         ...mapState('auth', ['user', 'isLoggedIn'])
     },
     methods: {
-        ...mapActions('article', ['createComment']),
+        ...mapActions('comments', ['createComment']),
         addComment() {
             let newComment = {
                 body: this.comment.body,
-                author_name: this.user.name
+                author_name: this.user.name,
+                article_id: this.article_id
             }
             this.createComment(newComment);
             this.toggleCommentForm()
