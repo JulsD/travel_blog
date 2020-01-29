@@ -2,7 +2,7 @@
 <template>
     <nav>
         <ul class="nav_list">
-            <li v-for="link in links" :key="link.title" class="nav_list_item">
+            <li v-for="link in links" :key="link.title" class="nav_list_item" v-if="link.title.includes('Demo') ? demoPage : true ">
                 <router-link :to="link.href" class="nav_link">{{ link.title }}</router-link>
             </li>
             <li class="nav_list_item">
@@ -38,7 +38,8 @@ export default {
         }
     },
     computed: {
-        ...mapState('auth', ['user', 'isLoggedIn'])
+        ...mapState('auth', ['user', 'isLoggedIn']),
+        ...mapState('flags', ['demoPage']),
     },
     methods: {
         ...mapActions('auth', ['login', 'logout'])

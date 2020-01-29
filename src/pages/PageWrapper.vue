@@ -4,14 +4,16 @@
   <main>
     <slot></slot>
   </main>
-  <Sidebar />
+  <Sidebar v-if="sidebar"/>
 </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Sidebar from '../components/organisms/Sidebar.vue'
 
 export default {
+  computed: mapState('flags', ['sidebar']),
   components: {
     Sidebar
   },

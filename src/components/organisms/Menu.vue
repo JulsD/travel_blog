@@ -12,7 +12,7 @@
             <li>
                 <Button style-type='link' @click="logout">Logout</Button>
             </li>
-            <li>
+            <li v-if="createArticle">
                 <router-link class="link" to="/new-article/">Create New Article</router-link>
             </li>
         </ul>
@@ -32,7 +32,8 @@ export default {
         }
     },
     computed: {
-        ...mapState('auth', ['user'])
+        ...mapState('auth', ['user']),
+        ...mapState('flags', ['createArticle']),
     },
     methods: {
         ...mapActions('auth', ['logout'])

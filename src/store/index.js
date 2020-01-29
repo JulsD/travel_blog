@@ -7,6 +7,7 @@ import articles from './articles'
 import article from './article'
 import comments from './comments'
 import tags from './tags'
+import flags from './flags'
 
 Vue.use(Vuex);
 
@@ -16,7 +17,8 @@ export default new Vuex.Store({
     articles,
     article,
     comments,
-    tags
+    tags,
+    flags
   },
   mutations: {
     ...vuexfireMutations

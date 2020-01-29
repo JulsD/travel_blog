@@ -2,15 +2,23 @@
 <template>
   <aside id="sidebar">
       <div class="sidebar-container">
-        <form class="search-form"></form>
-        <div>
+          <form class="search-form">
+              <input type="search">
+          </form>
+        <section>
             <h2>Tags</h2>
-            <router-link v-for="tag in tags"
-                         :key="tag.id"
-                         :to="{ name: 'new-article', params: { name: tag.name } }"
-                         class="tag">{{tag.name}}</router-link>
-        </div>
-        <div>Best for the last time</div>
+            <div class="section-content">
+                <router-link v-for="tag in tags"
+                            :key="tag.id"
+                            :to="{ name: 'new-article', params: { name: tag.name } }"
+                            class="tag">{{tag.name}}</router-link>
+            </div>
+            <div>Best for the last time</div>
+        </section>
+        <section>
+            <h2>Best for the last time</h2>
+            <div class="section-content"></div>
+        </section>
       </div>
   </aside>
 </template>
@@ -27,7 +35,7 @@ export default {
 </script>
 
 <style>
-.sidebar-container {
+.sidebar-container .section-content {
     background-color: var(--primary-color-2-tint);
     border-radius: calc(var(--gap-1)/2);
     padding: var(--gap-3);
