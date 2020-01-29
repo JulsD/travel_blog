@@ -1,15 +1,13 @@
 // ArticleShort.component.vue
 <template>
-  <a href="/" class="article-short-link article-short-wrapper">
-    <article class="article-short">
-        <header class="article-short-header">
-            <h1 class="article-short-title">{{article.title}}</h1>
-            <span class="article-short-date">{{article.created_at}}</span>
-        </header>
-        <p class="article-short-description">{{article.description}}</p>
-        <router-link :to="{ name: 'article', params: { id: article.id } }" class="button article-short-more article-short-link">Read more</router-link>
-    </article>
-  </a>
+  <router-link :to="{ name: 'article', params: { id: article.id } }" class="article-short article-short-wrapper">
+    <header class="article-short-header">
+        <h1 class="article-short-title">{{article.title}}</h1>
+        <span class="article-short-date">{{article.created_at}}</span>
+    </header>
+    <p class="article-short-description">{{article.description}}</p>
+    <span class="button article-short-more">Read more</span>
+  </router-link>
 </template>
 
 <script>
@@ -24,9 +22,9 @@ export default {
 </script>
 
 <style>
-.article-short-link,
-.article-short-link:active,
-.article-short-link:visited {
+.article-short,
+.article-short:active,
+.article-short:visited {
  text-decoration: none;
  color: inherit;
 }
@@ -34,22 +32,19 @@ export default {
 .article-short-wrapper {
     display: block;
     margin-bottom: var(--gap-4);
+    padding: var(--gap-3) var(--gap-4);
+    border: 1px solid var(--primary-color-2);
+    border-radius: calc(var(--gap-1)/2);
+    background-color: var(--primary-color-2-tint);
+    transition: box-shadow .3s ease-out;
 }
 
 .article-short-wrapper:last-child {
     margin-bottom: 0;
 }
 
-.article-short {
-    padding: var(--gap-3) var(--gap-4);
-    border: 1px dashed transparent;
-    border-radius: calc(var(--gap-1)/2);
-    background-color: var(--primary-color-2-tint);
-    transition: border-color .3s ease-out;
-}
-
-.article-short-link:hover .article-short {
-    border-color: var(--primary-color-2-shade);
+.article-short:hover {
+    box-shadow: 0 0 3px 2px var(--grey-color);
 }
 
 .article-short-header {
