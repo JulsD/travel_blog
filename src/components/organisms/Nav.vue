@@ -81,7 +81,7 @@ nav .nav_link {
 
 nav .nav_link,
 nav .nav_link:visited {
-    color: var(--text-color);
+    color: var(--text-color-brand);
 }
 
 nav .nav_link:hover {

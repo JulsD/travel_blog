@@ -81,6 +81,6 @@ export default {
 
 .comment span {
     font-size: 0.7rem;
-    color: var(--grey-color);
+    color: var(--grey-color-3);
 }
 </style>

@@ -44,7 +44,7 @@ export default {
 }
 
 .article-preview:hover {
-    box-shadow: 0 0 3px 2px var(--grey-color);
+    box-shadow: 0 0 3px 2px var(--grey-color-3);
 }
 
 .article-header {

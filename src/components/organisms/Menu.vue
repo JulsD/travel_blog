@@ -98,7 +98,7 @@ export default {
 .menu_list li:hover {
     display: block;
     width: 100%;
-    background-color: var(--grey-color-op10);
+    background-color: var(--grey-color-1);
 }
 
 .menu_list li:hover .link,

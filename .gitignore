@@ -3,4 +3,3 @@ node_modules/
 dist
 src/firebase.js
 .firebase
-.firebaserc

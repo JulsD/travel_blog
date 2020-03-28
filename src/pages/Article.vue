@@ -85,7 +85,7 @@ article section {
 
 .article_description {
     font-style: italic;
-    color: var(--grey-color);
+    color: var(--grey-color-3);
 }
 
 .article_section-title {

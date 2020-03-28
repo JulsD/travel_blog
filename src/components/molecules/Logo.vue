@@ -25,9 +25,10 @@ export default {
 .logo {
     display: flex;
     align-items: flex-end;
-    color: var(--text-color);
+    color: var(--text-color-brand);
     font-size: 1.5rem;
     font-weight: bold;
+    letter-spacing: .15rem;
     text-decoration: none;
 }
 

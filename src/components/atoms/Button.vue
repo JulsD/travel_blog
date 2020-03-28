@@ -51,12 +51,12 @@ export default {
     }
 
     .btn:disabled {
-        color: var(--grey-color);
+        color: var(--grey-color-3);
         cursor: not-allowed;
     }
 
     .btn:disabled:not(.btn_link) {
-        border: 1px solid var(--grey-color);
+        border: 1px solid var(--grey-color-3);
         background-color: var(--primary-color-2-op10);
     }
 </style>
