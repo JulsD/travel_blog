@@ -1,12 +1,12 @@
 // ArticleShort.component.vue
 <template>
-  <router-link :to="{ name: 'article', params: { id: article.id } }" class="article-short article-short-wrapper">
-    <header class="article-short-header">
-        <h1 class="article-short-title">{{article.title}}</h1>
-        <span class="article-short-date">{{article.created_at}}</span>
+  <router-link :to="{ name: 'article', params: { id: article.id } }" class="article-preview">
+    <header class="article-header">
+        <h1 class="article-title">{{article.title}}</h1>
+        <span class="article-date">{{article.created_at}}</span>
     </header>
-    <p class="article-short-description">{{article.description}}</p>
-    <span class="button article-short-more">Read more</span>
+    <p class="article-description">{{article.description}}</p>
+    <span class="button article-more">Read more</span>
   </router-link>
 </template>
 
@@ -22,14 +22,14 @@ export default {
 </script>
 
 <style>
-.article-short,
-.article-short:active,
-.article-short:visited {
+.article-preview,
+.article-preview:active,
+.article-preview:visited {
  text-decoration: none;
  color: inherit;
 }
 
-.article-short-wrapper {
+.article-preview {
     display: block;
     margin-bottom: var(--gap-4);
     padding: var(--gap-3) var(--gap-4);
@@ -39,37 +39,37 @@ export default {
     transition: box-shadow .3s ease-out;
 }
 
-.article-short-wrapper:last-child {
+.article-preview:last-child {
     margin-bottom: 0;
 }
 
-.article-short:hover {
+.article-preview:hover {
     box-shadow: 0 0 3px 2px var(--grey-color);
 }
 
-.article-short-header {
+.article-header {
     margin-bottom: var(--gap-2);
 }
 
-.article-short-title {
+.article-title {
     margin: var(--gap-1) 0;
     color: var(--text-color-dark);
     font-size: 1.2rem;
 }
 
-.article-short-date {
+.article-date {
     color: var(--primary-color-2-shade);
     font-size: .9rem;
 }
 
-.article-short-description {
+.article-description {
     margin-bottom: var(--gap-1);
     padding: var(--gap-1);
     border-radius: calc(var(--gap-1)/2);
     background-color: var(--primary-color-1-tint);
 }
 
-.article-short-more {
+.article-more {
     display: inline-block;
     padding: var(--gap-1);
     border-radius: calc(var(--gap-1)/2);
@@ -77,7 +77,7 @@ export default {
     transition: background-color .3s ease-out;
 }
 
-.article-short-more:hover {
+.article-more:hover {
     background-color: var(--secondary-color-2);
 }
 </style>
