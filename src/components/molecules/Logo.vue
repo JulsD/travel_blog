@@ -12,7 +12,7 @@ import LogoImage from '../atoms/LogoImage.vue';
 export default {
     data: () => {
         return {
-            logoTitle: 'Travel Blog'
+            logoTitle: 'BeWanderOne'
         }
     },
     components: {
