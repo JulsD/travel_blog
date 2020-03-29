@@ -2,7 +2,17 @@
 <template>
   <a href="/" class="logo">
     <LogoImage></LogoImage>
-    <span>{{logoTitle}}</span>
+    <span class="logo-title">
+        <span class="logo-title-item"
+              v-for="(item, index) in logoTitle"
+              :key="index"
+              :style="`
+                    --a-duration: ${(index > 3 ? 3 : index) | 1}s;
+                    --a-delay: ${logoTitle.length - index - 1 > 4 ? index%3 : logoTitle.length - index}s;
+                `">
+            {{item}}
+        </span>
+    </span>
   </a>
 </template>
 
@@ -26,10 +36,24 @@ export default {
     display: flex;
     align-items: flex-end;
     color: var(--text-color-brand);
+    text-decoration: none;
+}
+
+.logo-title {
+    font-size: 0;
+}
+
+.logo-title-item {
+    display: inline-block;
     font-size: 1.5rem;
     font-weight: bold;
     letter-spacing: .15rem;
-    text-decoration: none;
+}
+
+.logo:hover .logo-title-item {
+    --a-duration: 1s;
+    --a-delay: 0s;
+    animation: swing-vartical var(--a-duration) linear infinite var(--a-delay) alternate;
 }
 
 .logo .ice-cream-wrapper {
