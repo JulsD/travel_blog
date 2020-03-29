@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import Home from './pages/Home.vue'
-import Demo from './pages/Demo.vue'
-import Article from './pages/Article.vue'
-import ArticleNew from './pages/ArticleNew.vue'
+import Home from './organisms/Home.vue'
+import Demo from './organisms/Demo.vue'
+import Article from './organisms/Article.vue'
+import ArticleNew from './organisms/ArticleNew.vue'
 
 Vue.use(VueRouter);
 

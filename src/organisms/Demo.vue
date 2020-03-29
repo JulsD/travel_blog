@@ -13,7 +13,7 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex'
-import PageWrapper from './PageWrapper.vue'
+import PageWrapper from '../components/PageWrapper.vue'
 
 export default {
   computed: {

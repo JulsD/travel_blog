@@ -15,7 +15,7 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
-import Button from '../atoms/Button.vue'
+import Button from './atoms/Button.vue'
 import Menu from './Menu.vue'
 
 export default {

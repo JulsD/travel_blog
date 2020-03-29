@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Header from './components/organisms/Header.vue'
+import Header from './components/Header.vue'
 
 export default {
     data: () => {

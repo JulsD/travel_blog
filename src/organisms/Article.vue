@@ -22,9 +22,9 @@
 <script>
 import moment from 'moment';
 import { mapState, mapActions } from 'vuex'
-import PageWrapper from './PageWrapper.vue'
-import CommentForm from '../components/organisms/CommentForm.vue'
-import Comment from '../components/organisms/Comment.vue'
+import PageWrapper from '../components/PageWrapper.vue'
+import CommentForm from '../components/CommentForm.vue'
+import Comment from '../components/Comment.vue'
 
 export default {
     mounted() {

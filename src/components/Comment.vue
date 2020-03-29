@@ -14,7 +14,7 @@
 
 <script>
 import moment from 'moment';
-import Button from '../atoms/Button';
+import Button from './atoms/Button';
 import { mapState, mapActions } from 'vuex';
 
 export default {

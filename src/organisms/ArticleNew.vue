@@ -8,8 +8,8 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import PageWrapper from './PageWrapper.vue'
-import ArticleForm from '../components/organisms/ArticleForm.vue'
+import PageWrapper from '../components/PageWrapper.vue'
+import ArticleForm from '../components/ArticleForm.vue'
 
 export default {
     mounted() {

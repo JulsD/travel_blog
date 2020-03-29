@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import Button from '../atoms/Button';
+import Button from './atoms/Button';
 import { mapState, mapActions } from 'vuex';
 
 export default {

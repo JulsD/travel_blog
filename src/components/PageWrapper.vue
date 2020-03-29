@@ -10,7 +10,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import Sidebar from '../components/organisms/Sidebar.vue'
+import Sidebar from '../components/Sidebar.vue'
 
 export default {
   computed: mapState('flags', ['sidebar']),

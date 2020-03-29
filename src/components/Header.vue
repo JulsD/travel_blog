@@ -10,9 +10,9 @@
 </template>
 
 <script>
-import Logo from '../molecules/Logo.vue';
+import Logo from './Logo.vue';
 import Nav from './Nav.vue';
-import Citation from '../molecules/Citation.vue';
+import Citation from './Citation.vue';
 
 export default {
     data: () => {

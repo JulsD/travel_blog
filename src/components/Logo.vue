@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import LogoImage from '../atoms/LogoImage.vue';
+import LogoImage from './atoms/LogoImage.vue';
 
 export default {
     data: () => {
