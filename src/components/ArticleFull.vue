@@ -75,7 +75,7 @@ article section p {
     text-indent: 2rem;
 }
 
-.article_section-title {
+.article_section_title {
     font-size: 1.1rem;
 }
 </style>
