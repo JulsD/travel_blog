@@ -48,7 +48,7 @@ export default {
     margin: 0 calc(var(--gap-1)/2) calc(var(--gap-1)/2) 0;
     border-radius: var(--radius);
     background-color: var(--white-color-op40);
-    color: var(--text-color-dark);
+    color: var(--text-color-brand-dark);
     transition-duration: .3s;
     transition-property: background-color, color;
     transition-timing-function: linear;
@@ -57,6 +57,6 @@ export default {
 .tag:hover {
     text-decoration: none;
     background-color: var(--primary-color-2-dark);
-    color: var(--text-color-light);
+    color: var(--text-color-brand-light);
 }
 </style>

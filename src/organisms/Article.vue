@@ -9,7 +9,7 @@
         <p class="article_description">{{article.description}}</p>
         <section v-for="(section, index) in article.body" :key="index">
             <h2 class="article_section_title">{{section.title}}</h2>
-            <p>{{section.body}}</p>
+            <p>{{section.content}}</p>
         </section>
     </article>
     <CommentForm :article_id="article.id"/>
@@ -89,7 +89,7 @@ article section {
 }
 
 .article_section-title {
-    color: var(--text-color-dark);
+    color: var(--text-color-brand-dark);
     font-size: 1.1rem;
 }
 </style>

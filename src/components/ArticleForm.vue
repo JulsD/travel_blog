@@ -64,7 +64,7 @@ export default {
 .article_form label {
     font-size: 1rem;
     font-weight: bold;
-    color: var(--text-color-dark);
+    color: var(--text-color-brand-dark);
     margin-bottom: var(--gap-1);
 }
 

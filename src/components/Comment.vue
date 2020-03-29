@@ -72,7 +72,7 @@ export default {
 }
 
 .comment h3 {
-    color: var(--text-color-dark);
+    color: var(--text-color-brand-dark);
 }
 
 .comment p {

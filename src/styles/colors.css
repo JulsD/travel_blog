@@ -27,6 +27,6 @@
     /* derivative colors: */
     --text-color: var(--grey-color-5);
     --text-color-brand: var(--primary-color-2-shade);
-    --text-color-light: var(--primary-color-1-tint);
-    --text-color-dark: var(--primary-color-2-dark);
+    --text-color-brand-light: var(--primary-color-1-tint);
+    --text-color-brand-dark: var(--primary-color-2-dark);
 }

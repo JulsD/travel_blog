@@ -29,7 +29,6 @@ export default {
 
 <style>
 #header {
-    background-color: var(--primary-color-1);
     color: #416165;
 }
 

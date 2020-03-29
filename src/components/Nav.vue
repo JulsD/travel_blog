@@ -85,6 +85,6 @@ nav .nav_link:visited {
 }
 
 nav .nav_link:hover {
-    text-shadow: 1px 1px var(--text-color-dark);
+    text-shadow: 1px 1px var(--text-color-brand-dark);
 }
 </style>

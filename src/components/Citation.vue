@@ -24,7 +24,8 @@ data: () => {
 <style>
 #citation-block {
     background-color: var(--primary-color-2-shade);
-    color: var(--primary-color-1-tint);
+    background: linear-gradient(90deg,var(--primary-color-1-tint) 0%, var(--primary-color-2-shade) 100%);;
+    color: var(--white-color);
     text-align: center;
     font-size: 1.2rem;
     font-style: italic;
