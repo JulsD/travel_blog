@@ -4,7 +4,7 @@
     <div class="main-wrapper header-wrapper">
         <Logo />
         <Nav />
-        <Avatar :user="user" size="65px"/>
+        <Avatar v-if="user" :user="user" size="65px"/>
     </div>
     <Citation />
   </header>
