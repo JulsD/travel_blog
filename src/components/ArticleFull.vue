@@ -10,6 +10,10 @@
             <h2 class="article_section_title">{{section.title}}</h2>
             <p>{{section.content}}</p>
         </section>
+        <footer>
+            <span class="article-footer-border"></span>
+            <span class="article-footer-content">{{article.author || 'Unsigned'}}</span>
+        </footer>
     </article>
 </template>
 
@@ -77,5 +81,26 @@ article section p {
 
 .article_section_title {
     font-size: 1.1rem;
+}
+
+article footer {
+    margin: calc(var(--gap-2)*2) 0;
+    text-align: right;
+    font-size: .9rem;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+}
+
+article footer .article-footer-border {
+    display: block;
+    content: '';
+    flex: 1 1 100%;
+    border-top: 1px solid var(--grey-color-3);
+}
+
+article footer .article-footer-content {
+    padding-left: var(--gap-1);
+    flex: 0 0 auto;
 }
 </style>
