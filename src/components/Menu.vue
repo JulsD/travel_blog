@@ -2,18 +2,18 @@
 <template>
     <div class="menu">
         <div class="menu_header">
-            <div class="portret" v-if="user"><img :src="user.image" :alt="user.name"></div>
-            <Button @click="menuExpanded = !menuExpanded">
-                <span v-if="!menuExpanded">Open Menu</span>
-                <span v-if="menuExpanded">Close Menu</span>
+            <Button @click="menuExpanded = !menuExpanded"
+                    v-if="user"
+                    class="account-btn">
+                    >>
             </Button>
         </div>
         <ul v-if="menuExpanded" class="menu_list">
             <li>
-                <Button style-type='link' @click="logout">Logout</Button>
+                <Button class="menu_list__item" @click="logout">Logout</Button>
             </li>
             <li v-if="createArticle">
-                <router-link class="link" to="/new-article/">Create New Article</router-link>
+                <router-link class="menu_list__item" to="/new-article/">Create New Article</router-link>
             </li>
         </ul>
     </div>
@@ -32,7 +32,6 @@ export default {
         }
     },
     computed: {
-        ...mapState('auth', ['user']),
         ...mapState('flags', ['createArticle']),
     },
     methods: {
@@ -53,19 +52,6 @@ export default {
     display: flex;
     align-items: center;
 }
-.menu_header .portret {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-right: var(--gap-2);
-}
-
-.menu_header .portret img {
-    display: block;
-    max-width: 100%;
-    max-height: 100%;
-}
 
 .menu_list {
     width: max-content;
@@ -84,14 +70,14 @@ export default {
     box-shadow: 0 0 5px 0 var(--primary-color-2);
 }
 
-.menu_list li .link,
-.menu_list li .btn.btn_link {
+.menu_list li .menu_list__item {
     padding: var(--gap-1) var(--gap-2);
     display: block;
     width: 100%;
     text-align: right;
     text-decoration: none;
     color: var(--primary-color-2);
+    border: none;
 }
 
 .menu_list li:hover,
@@ -101,8 +87,9 @@ export default {
     background-color: var(--grey-color-1);
 }
 
-.menu_list li:hover .link,
-.menu_list li:hover .btn.btn_link:not(disabled) {
+.menu_list li:hover .menu_list__item:not(disabled) {
     color: var(--primary-color-2-shade);
+    box-shadow: none;
+    border: none;
 }
 </style>

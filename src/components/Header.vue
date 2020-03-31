@@ -4,15 +4,18 @@
     <div class="main-wrapper header-wrapper">
         <Logo />
         <Nav />
+        <Avatar :user="user" size="65px"/>
     </div>
     <Citation />
   </header>
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 import Logo from './Logo.vue';
 import Nav from './Nav.vue';
 import Citation from './Citation.vue';
+import Avatar from './atoms/Avatar.vue';
 
 export default {
     data: () => {
@@ -22,7 +25,11 @@ export default {
     components: {
         Logo,
         Nav,
-        Citation
+        Citation,
+        Avatar
+    },
+    computed: {
+        ...mapState('auth', ['user'])
     }
 }
 </script>
@@ -36,6 +43,15 @@ export default {
     padding: var(--gap-2);
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
+}
+
+.header-wrapper nav {
+    margin-left: auto;
+    margin-right: var(--gap-2);
+}
+
+.header-wrapper .avatar-wrapper {
+    margin-left: var(--gap-1);
 }
 </style>

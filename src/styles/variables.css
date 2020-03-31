@@ -9,4 +9,5 @@
     --radius: 8px;
 
     --shadow: 0 0 20px 0 var(--grey-color-3);
+    --shadow-s: 0 0 8px 0 var(--grey-color-3);
 }

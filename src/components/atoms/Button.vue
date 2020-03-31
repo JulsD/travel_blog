@@ -1,7 +1,7 @@
 // Button.vue
 
 <template>
-    <button :class="['btn', {'btn_link': styleType == 'link'}]" @click="$emit('click')">
+    <button class="btn" @click="$emit('click')">
         <slot>Button</slot>
     </button>
 </template>
@@ -16,46 +16,36 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
     .btn {
+        --btn-color: var(--primary-color-2-shade);
+        --btn-border-color: transparent;
+        --btn-bg-color: transparent;
         display: inline-block;
-        padding: var(--gap-1);
-        border-radius: calc(var(--gap-1)/2);
         cursor: pointer;
+        background-color: var(--btn-bg-color);
+        padding: var(--gap-1);
         transition-duration: .3s;
         transition-property: background-color, border-color, box-shadow;
         transition-timing-function: linear;
-        border: 1px solid transparent;
-        background-color: transparent;
-        font-size: inherit;
-    }
-
-    .btn.btn_link {
-        padding: 0;
-        border: none;
+        border: 1px solid var(--btn-border-color);
+        border-radius: calc(var(--radius)/2);
     }
 
     .btn:not(:disabled) {
-        border-color: var(--primary-color-2);
-        color: var(--primary-color-2-shade);
+        --btn-border-color: var(--grey-color-2);
+        color: var(--btn-color);
     }
 
     .btn:not(:disabled):hover {
-        text-shadow: none;
-    }
-
-    .btn:not(:disabled):not(.btn_link):hover {
+        box-shadow: var(--shadow-s);
         background-color: var(--white-color-op40);
-        border-color: var(--primary-color-2-shade);
-        box-shadow: 1px 1px 2px var(--text-color-brand-dark);
     }
 
     .btn:disabled {
-        color: var(--grey-color-3);
+        --btn-bg-color: var(--grey-color-2);
+        --btn-color: var(--grey-color-3);
         cursor: not-allowed;
-    }
-
-    .btn:disabled:not(.btn_link) {
         border: 1px solid var(--grey-color-3);
         background-color: var(--primary-color-2-op10);
     }

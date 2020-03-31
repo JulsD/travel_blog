@@ -7,7 +7,7 @@
             </li>
             <li class="nav_list_item">
                 <Button v-if="!isLoggedIn" @click="login">Login with Google</Button>
-                <Menu v-if="isLoggedIn" />
+                <Button v-if="isLoggedIn" @click="logout">Logout</Button>
             </li>
         </ul>
     </nav>
@@ -52,10 +52,6 @@ export default {
 </script>
 
 <style>
-nav {
-    color: var(--primary-color-2);
-}
-
 nav .nav_list {
     list-style: none;
     display: flex;
@@ -64,7 +60,7 @@ nav .nav_list {
 }
 
 nav .nav_list_item {
-    margin-left: var(--gap-1);
+    margin-left: var(--gap-2);
     font-size: 1rem;
 }
 
@@ -75,16 +71,18 @@ nav .nav_list_item:first-child {
 nav .nav_link {
     padding: var(--gap-1);
     text-decoration: none;
-    transition: text-shadow .3s ease-out;
-    text-shadow: 1px 1px transparent;
+    border-radius: calc(var(--radius)/2);
+    transition: box-shadow .3s ease-out, color .3s ease-out;
+    color: var(--primary-color-2);
 }
 
 nav .nav_link,
 nav .nav_link:visited {
-    color: var(--text-color-brand);
+    color: var(--primary-color-2-dark);
 }
 
 nav .nav_link:hover {
-    text-shadow: 1px 1px var(--text-color-brand-dark);
+    box-shadow: var(--shadow-s);
+    color: var(--primary-color-2-shade);
 }
 </style>
