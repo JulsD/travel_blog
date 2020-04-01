@@ -1,28 +1,42 @@
 // CommentForm
 <template>
-    <div>
-        <Button @click="toggleCommentForm" v-if="isLoggedIn && !expanded">Comment</Button>
-        <form class="comment_form" @submit.prevent="addComment" v-else-if="isLoggedIn && expanded">
-            <fieldset>
-                    <legend>Leave a comment</legend>
-                    <label for="comment_author">Your name</label>
-                    <input type="text"
-                        id="comment_author"
-                        :value="this.user.name"
-                        disabled />
-
-                    <label for="comment_body">Comment text</label>
-                    <textarea id="comment_body" v-model="comment.body"/>
-            </fieldset>
-            <Button type="submit">Create comment</Button>
-            <Button @click="toggleCommentForm">Cancel</Button>
-        </form>
-        <p v-else>Sign Up or Log In to leave a comment</p>
+    <div class="comment_form_wrapper">
+        <transition name="fade">
+            <Button style-type="link"
+                    type="button"
+                    class="comment_form_toggler"
+                    @click="toggleCommentForm" 
+                    v-if="isLoggedIn && !expanded">Leave a Comment</Button>
+        </transition>
+        <transition name="expand">
+            <form class="comment_form" 
+                @submit.prevent="addComment"
+                v-if="isLoggedIn && expanded">
+                <fieldset>
+                    <legend class="visually-hidden">Leave a comment</legend>
+                    <label for="comment_author" class="visually-hidden">Your name</label>
+                    <Editor id="comment_author"
+                            :value="this.user.name"/>
+                    <label for="comment_body" class="visually-hidden">Comment text</label>
+                    <textarea rows="5" id="comment_body" v-model="comment.body"/>
+                </fieldset>
+                <Button style-type="secondary" type="button" @click="toggleCommentForm">Cancel</Button>
+                <Button type="submit">Add</Button>
+            </form>
+        </transition>
+        
+        <p class="comment_form--follback" v-if="!isLoggedIn">
+            <!-- Sign Up
+            or  -->
+            <Button style-type="link" @click="login">Login with Google</Button>
+            to leave a comment
+        </p>
     </div>
 </template>
 
 <script>
 import Button from './atoms/Button';
+import Editor from './Editor';
 import { mapState, mapActions } from 'vuex';
 
 export default {
@@ -42,6 +56,7 @@ export default {
     },
     methods: {
         ...mapActions('comments', ['createComment']),
+        ...mapActions('auth', ['login']),
         addComment() {
             let newComment = {
                 body: this.comment.body,
@@ -57,52 +72,63 @@ export default {
         }
     },
     components: {
-        Button
+        Button,
+        Editor
     }
 }
 </script>
 
-<style>
-.comment_form fieldset {
+<style scoped>
+.comment_form_wrapper {
+    margin: 0 0 var(--gap-2);
     display: flex;
     flex-direction: column;
-    padding: var(--gap-3) 0;
+    position: relative;
+    min-height: var(--gap-4);
+}
+
+.comment_form {
+    padding: 0 0 var(--gap-2);
+    text-align: right;
+    display: inline-block;
+}
+
+.comment_form_toggler {
+    justify-self: flex-end;
+    margin-left: auto;
+    font-size: .9rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.comment_form fieldset {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
     border: none;
-    border-top: 2px dashed var(--primary-color-2-tint);
-    border-bottom: 2px dashed var(--primary-color-2-tint);
+    padding: 0;
+    margin: 0 0 var(--gap-3);
 }
 
-.comment_form fieldset + button {
-    margin-top: var(--gap-3);
-}
-
-.comment_form label {
-    font-size: 1rem;
-    font-weight: bold;
-    color: var(--text-color-brand-dark);
-    margin-bottom: var(--gap-1);
-}
-
-.comment_form input,
+.comment_form .editor_wrapper,
 .comment_form textarea {
-    border-radius: var(--radius);
-    border: 1px solid var(--primary-color-2-shade);
-    box-sizing: border-box;
-    display: block;
-    width: 100%;
-    padding: var(--gap-1);
-    margin-bottom: var(--gap-4);
-    outline: none;
+    margin-bottom: var(--gap-2);
 }
 
-.comment_form input:last-child,
+.comment_form textarea {
+    width: 100%;
+}
+
+.comment_form .editor_wrapper:last-child,
 .comment_form textarea:last-child {
     margin-bottom: 0;
 }
 
-.comment_form input:focus,
-.comment_form textarea:focus {
-    outline: none;
-    box-shadow: 0 0 3px 2px var(--primary-color-2-dark);
+.comment_form--follback {
+    display: block;
+    text-align: center;
+    color: var(--grey-color-5);
+    font-size: .9rem;
 }
 </style>

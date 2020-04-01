@@ -1,0 +1,21 @@
+input,
+textarea {
+    border-radius: var(--radius);
+    border: 1px solid var(--grey-color-2);
+    box-sizing: border-box;
+    display: block;
+    padding: var(--gap-1);
+    outline: none;
+    transition: all .5s ease-in;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: var(--shadow-s);
+}
+
+input[disabled],
+textarea[disabled] {
+    background-color: var(--grey-color-2);
+}

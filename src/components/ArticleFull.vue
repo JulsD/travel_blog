@@ -12,7 +12,7 @@
         </section>
         <footer>
             <span class="article-footer-border"></span>
-            <span class="article-footer-content">{{article.author || 'Unsigned'}}</span>
+            <span class="article-footer-content">{{article.author && article.author.name || 'Unsigned'}}</span>
         </footer>
     </article>
 </template>

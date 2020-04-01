@@ -1,7 +1,9 @@
 // Button.vue
 
 <template>
-    <button class="btn" @click="$emit('click')">
+    <button class="btn"
+            :class="{'btn_link': styleType === 'link', 'btn_secondary': styleType === 'secondary'}"
+            @click="$emit('click')">
         <slot>Button</slot>
     </button>
 </template>
@@ -10,7 +12,8 @@
 export default {
     props: {
         styleType: {
-            type: String
+            type: String,
+            default: ''
         }
     }
 }
@@ -30,6 +33,14 @@ export default {
         transition-timing-function: linear;
         border: 1px solid var(--btn-border-color);
         border-radius: calc(var(--radius)/2);
+    }
+
+    .btn.btn_link {
+        border: none;
+    }
+
+    .btn.btn_secondary {
+        --btn-color: var(--grey-color-4);
     }
 
     .btn:not(:disabled) {

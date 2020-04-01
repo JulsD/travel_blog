@@ -23,3 +23,22 @@
   50%  {transform: translateY(-5px);}
   100%  {transform: translateY(-10px);}
 }
+
+.fade-enter-active, .fade-leave-active {
+  transition: all .5s ease-in;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.expand-enter-active, .expand-leave-active {
+  transition: all .5s ease-in;
+  max-height: 1000px;
+  overflow: hidden;
+}
+
+.expand-enter, .expand-leave-to {
+  max-height: 0;
+  opacity: 0;
+}
