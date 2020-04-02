@@ -35,7 +35,7 @@
     </div>
 </template>
 
-<script>
+<script scoped>
 import Button from './atoms/Button';
 import Editor from './Editor';
 import { mapState, mapActions } from 'vuex';
