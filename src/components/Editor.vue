@@ -1,12 +1,16 @@
 // Editor.vue
 <template>
     <div class="editor_wrapper">
-        <input type="text"
+        <input ref="input"
+            type="text"
             v-bind="$attrs"
-            :disabled="!active" />
+            :value="value"
+            :disabled="!active"
+            @enter="save"
+            @input="handleInput" />
             <Button v-if="!active" 
                     type="button"
-                    @click="toggleActive"
+                    @click="edit"
                     styleType="link"
                     class="editor_toggler editor_toggler_open">
                 <span class="icon-pencil"></span> 
@@ -15,7 +19,7 @@
             <Button v-if="active"
                     type="button"
                     styleType="link"
-                    @click="toggleActive"
+                    @click="save"
                     class="editor_toggler">
                 <span class="icon-checkmark"></span> 
                 <span class="visually-hidden">Save</span>
@@ -23,7 +27,7 @@
             <Button v-if="active"
                     type="button"
                     styleType="link"
-                    @click="toggleActive"
+                    @click="cancel"
                     class="editor_toggler">
                 <span class="icon-cross"></span> 
                 <span class="visually-hidden">Cancel</span>
@@ -37,12 +41,39 @@ import Button from './atoms/Button';
 export default {
     data() {
         return {
-            active: false
+            active: false,
+            editorValue: ''
+        }
+    },
+    model: {
+        prop: 'value',
+        event: 'input'
+    },
+    props: {
+        value: {
+            type: String,
+            default: ''
         }
     },
     methods: {
         toggleActive() {
             this.active = !this.active;
+        },
+        handleInput(event) {
+            this.$emit('input', event.target.value)
+            this.editorValue = event.target.value;
+        },
+         save() {
+            this.toggleActive();
+            this.$emit('save', this.editorValue);
+        },
+        edit() {
+            this.toggleActive();
+            this.$refs.input.focus();
+        },
+        cancel() {
+            this.toggleActive();
+            this.editorValue = this.value;
         }
     },
     components: {

@@ -16,9 +16,10 @@
                     <legend class="visually-hidden">Leave a comment</legend>
                     <label for="comment_author" class="visually-hidden">Your name</label>
                     <Editor id="comment_author"
-                            :value="this.user.name"/>
+                            @save="saveCommentAuthorName"
+                            :value="authorName"/>
                     <label for="comment_body" class="visually-hidden">Comment text</label>
-                    <textarea rows="5" id="comment_body" v-model="comment.body"/>
+                    <textarea rows="5" id="comment_body" v-model="comment"/>
                 </fieldset>
                 <Button style-type="secondary" type="button" @click="toggleCommentForm">Cancel</Button>
                 <Button type="submit">Add</Button>
@@ -42,25 +43,36 @@ import { mapState, mapActions } from 'vuex';
 export default {
     data: () => ({
         expanded: false,
-        comment: {
-            body: ''
-        }
+        comment: '',
+        authorName: ''
     }),
     props: {
         article_id: {
             type: String
+        },
+        user: {
+            type: Object,
+            required: true
+        },
+        isLoggedIn: {
+            type: Boolean,
+            default: false
         }
     },
-    computed: {
-        ...mapState('auth', ['user', 'isLoggedIn'])
+    watch: {
+        user() {
+            return this.authorName = this.user.name;
+        }
     },
     methods: {
         ...mapActions('comments', ['createComment']),
-        ...mapActions('auth', ['login']),
         addComment() {
             let newComment = {
-                body: this.comment.body,
-                author_name: this.user.name,
+                body: this.comment,
+                author: {
+                    name: this.authorName,
+                    user_id: this.user.id
+                },
                 article_id: this.article_id
             }
             this.createComment(newComment);
@@ -68,7 +80,10 @@ export default {
         },
         toggleCommentForm(){
             this.expanded = !this.expanded;
-            if (!this.expanded) this.comment.body = ''
+            if (!this.expanded) this.comment = ''
+        },
+        saveCommentAuthorName(value){
+            this.authorName = value;
         }
     },
     components: {
