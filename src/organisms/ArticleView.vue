@@ -2,7 +2,7 @@
 <template>
 <PageWrapper>
     <ArticleFull v-if="article" :article="article"/>
-    <CommentForm :article_id="article.id" :user="user" :is-logged-in="isLoggedIn"/>
+    <CommentForm :article_id="article.id"/>
     <div class="comments_list">
         <Comment v-for="(comment, index) in comments" :key="index" :comment="comment" />
     </div>
@@ -22,7 +22,6 @@ export default {
         this.initComments(this.$route.params.id);
     },
     computed: {
-        ...mapState('auth', ['user', 'isLoggedIn']),
         ...mapState('article', ['article']),
         ...mapState('comments', ['comments'])
     },

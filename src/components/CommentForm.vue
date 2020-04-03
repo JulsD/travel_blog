@@ -49,15 +49,10 @@ export default {
     props: {
         article_id: {
             type: String
-        },
-        user: {
-            type: Object,
-            required: true
-        },
-        isLoggedIn: {
-            type: Boolean,
-            default: false
         }
+    },
+    computed: {
+        ...mapState('auth', ['user', 'isLoggedIn'])
     },
     watch: {
         user() {
@@ -65,6 +60,7 @@ export default {
         }
     },
     methods: {
+        ...mapActions('auth', ['login']),
         ...mapActions('comments', ['createComment']),
         addComment() {
             let newComment = {
