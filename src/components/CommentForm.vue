@@ -56,7 +56,7 @@ export default {
     },
     watch: {
         user() {
-            return this.authorName = this.user.name;
+            return this.authorName = this.user && this.user.name || null;
         }
     },
     methods: {
