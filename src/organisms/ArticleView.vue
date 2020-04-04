@@ -21,6 +21,7 @@ import PageWrapper from '../components/PageWrapper.vue'
 import ArticleFull from '../components/ArticleFull.vue'
 import CommentForm from '../components/CommentForm.vue'
 import Comment from '../components/Comment.vue'
+import Button from '../components/atoms/Button.vue'
 
 export default {
     mounted() {
@@ -41,7 +42,8 @@ export default {
         PageWrapper,
         CommentForm,
         Comment,
-        ArticleFull
+        ArticleFull,
+        Button
   },
 }
 </script>
