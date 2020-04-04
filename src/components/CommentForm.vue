@@ -6,73 +6,71 @@
                     type="button"
                     class="comment_form_toggler"
                     @click="toggleCommentForm" 
-                    v-if="isLoggedIn && !expanded">Leave a Comment</Button>
+                    v-if="!expanded">Leave a Comment</Button>
         </transition>
         <transition name="expand">
             <form class="comment_form" 
                 @submit.prevent="addComment"
-                v-if="isLoggedIn && expanded">
+                v-if="expanded">
                 <fieldset>
                     <legend class="visually-hidden">Leave a comment</legend>
                     <label for="comment_author" class="visually-hidden">Your name</label>
                     <Editor id="comment_author"
                             @save="saveCommentAuthorName"
-                            :value="authorName"/>
+                            @input="checkValidity"
+                            :value="authorName || user.name"/>
                     <label for="comment_body" class="visually-hidden">Comment text</label>
-                    <textarea rows="5" id="comment_body" v-model="comment"/>
+                    <textarea rows="5" 
+                              @input="checkValidity"
+                              id="comment_body" 
+                              v-model="comment"/>
                 </fieldset>
                 <Button style-type="secondary" type="button" @click="toggleCommentForm">Cancel</Button>
-                <Button type="submit">Add</Button>
+                <Button type="submit" :disabled="!isValid">Add</Button>
             </form>
         </transition>
-        
-        <p class="comment_form--follback" v-if="!isLoggedIn">
-            <!-- Sign Up
-            or  -->
-            <Button style-type="link" @click="login">Login with Google</Button>
-            to leave a comment
-        </p>
     </div>
 </template>
 
 <script scoped>
 import Button from './atoms/Button';
 import Editor from './Editor';
-import { mapState, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
     data: () => ({
         expanded: false,
         comment: '',
-        authorName: ''
+        authorName: '',
+        isValid: false
     }),
     props: {
-        article_id: {
-            type: String
-        }
-    },
-    computed: {
-        ...mapState('auth', ['user', 'isLoggedIn'])
-    },
-    watch: {
-        user() {
-            return this.authorName = this.user && this.user.name || null;
+        articleId: {
+            type: [String, undefined],
+            default: '',
+            required: true
+        },
+        user: {
+            type: Object,
+            required: true
         }
     },
     methods: {
-        ...mapActions('auth', ['login']),
         ...mapActions('comments', ['createComment']),
         addComment() {
             let newComment = {
                 body: this.comment,
-                author: {
-                    name: this.authorName,
-                    user_id: this.user.id
-                },
-                article_id: this.article_id
+                author_name: this.authorName,
+                article_id: this.articleId
             }
+
             this.createComment(newComment);
-            this.toggleCommentForm()
+            this.toggleCommentForm();
+        },
+        checkValidity(){
+            if(this.authorName && this.comment) {
+                this.isValid = true;
+            }
         },
         toggleCommentForm(){
             this.expanded = !this.expanded;

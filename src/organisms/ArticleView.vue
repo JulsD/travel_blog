@@ -2,7 +2,13 @@
 <template>
 <PageWrapper>
     <ArticleFull v-if="article" :article="article"/>
-    <CommentForm :article_id="article.id"/>
+    <CommentForm :article-id="article.id" :user="user" v-if="user && article && isLoggedIn"/>
+    <p class="comment_form--follback" v-if="!isLoggedIn">
+            <!-- Sign Up
+            or  -->
+        <Button style-type="link" @click="login">Login with Google</Button>
+        to leave a comment
+    </p>
     <div class="comments_list">
         <Comment v-for="(comment, index) in comments" :key="index" :comment="comment" />
     </div>
@@ -22,10 +28,12 @@ export default {
         this.initComments(this.$route.params.id);
     },
     computed: {
+        ...mapState('auth', ['user', 'isLoggedIn']),
         ...mapState('article', ['article']),
         ...mapState('comments', ['comments'])
     },
     methods: {
+        ...mapActions('auth', ['login']),
         ...mapActions('article', ['initArticle']),
         ...mapActions('comments', ['initComments'])
     },
