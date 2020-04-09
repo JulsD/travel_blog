@@ -1,11 +1,11 @@
 // Menu
 <template>
-    <div class="menu">
+    <div class="menu" @blure="close">
         <div class="menu_header">
-            <Button @click="menuExpanded = !menuExpanded"
+            <Button @click="toggle"
                     v-if="user"
                     class="account-btn">
-                    >>
+                    <Avatar :user="user" size="65px"/>
             </Button>
         </div>
         <ul v-if="menuExpanded" class="menu_list">
@@ -22,22 +22,41 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 import Button from './atoms/Button.vue'
+import Avatar from './atoms/Avatar.vue';
 
 export default {
     data: () => {
         return {
             menuExpanded: false,
-            authExpanded: false,
             isMobile: false
         }
     },
     computed: {
         ...mapState('flags', ['createArticle']),
+        ...mapState('auth', ['user'])
     },
     methods: {
-        ...mapActions('auth', ['logout'])
+        ...mapActions('auth', ['logout']),
+        open() {
+            setTimeout(() => {
+                document.addEventListener('click', this.toggle, false);
+            }, 250);
+        },
+        close() {
+            document.removeEventListener('click', this.toggle, false);
+        },
+        toggle() {
+            if(this.menuExpanded) {
+                this.close();
+            } else {
+                this.open();
+            }
+
+            this.menuExpanded = !this.menuExpanded;
+        }
     },
     components: {
+        Avatar,
         Button
     }
 }
@@ -91,5 +110,10 @@ export default {
     color: var(--primary-color-2-shade);
     box-shadow: none;
     border: none;
+}
+
+.account-btn {
+    padding: 0;
+    border-radius: 50%;
 }
 </style>

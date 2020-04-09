@@ -2,12 +2,11 @@
 <template>
     <nav>
         <ul class="nav_list">
-            <li v-for="link in links" :key="link.title" class="nav_list_item" v-if="link.title.includes('Demo') ? demoPage : true ">
+            <li v-for="link in links" :key="link.title" class="nav_list_item">
                 <router-link :to="link.href" class="nav_link">{{ link.title }}</router-link>
             </li>
-            <li class="nav_list_item">
-                <Button v-if="!isLoggedIn" @click="login">Login with Google</Button>
-                <Button v-if="isLoggedIn" @click="logout">Logout</Button>
+            <li class="nav_list_item" v-if="!isLoggedIn">
+                <Button @click="login">Login with Google</Button>
             </li>
         </ul>
     </nav>
@@ -25,21 +24,12 @@ export default {
                 {
                     title: 'Home',
                     href: '/'
-                },
-                {
-                    title: 'Demo 1',
-                    href: '/demo/1'
-                },
-                {
-                    title: 'Demo 2',
-                    href: '/demo/2'
                 }
             ]
         }
     },
     computed: {
-        ...mapState('auth', ['user', 'isLoggedIn']),
-        ...mapState('flags', ['demoPage']),
+        ...mapState('auth', ['user', 'isLoggedIn'])
     },
     methods: {
         ...mapActions('auth', ['login', 'logout'])
