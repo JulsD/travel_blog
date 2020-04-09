@@ -61,7 +61,7 @@ export default {
         addComment() {
             let newComment = {
                 body: this.comment,
-                author_name: this.authorName,
+                author_name: this.user.name,
                 article_id: this.articleId
             }
 
