@@ -15,13 +15,11 @@
                 <fieldset>
                     <legend class="visually-hidden">Leave a comment</legend>
                     <label for="comment_author" class="visually-hidden">Your name</label>
-                    <Editor id="comment_author"
-                            @save="saveCommentAuthorName"
-                            @input="checkValidity"
-                            :value="authorName || user.name"/>
+                    <input id="comment_author"
+                            disabled
+                            :value="user.name"/>
                     <label for="comment_body" class="visually-hidden">Comment text</label>
                     <textarea rows="5" 
-                              @input="checkValidity"
                               id="comment_body" 
                               v-model="comment"/>
                 </fieldset>
@@ -40,9 +38,7 @@ import { mapActions } from 'vuex';
 export default {
     data: () => ({
         expanded: false,
-        comment: '',
-        authorName: '',
-        isValid: false
+        comment: ''
     }),
     props: {
         articleId: {
@@ -53,6 +49,11 @@ export default {
         user: {
             type: Object,
             required: true
+        }
+    },
+    computed: {
+        isValid() {
+            return this.comment ? true : false;
         }
     },
     methods: {
@@ -67,22 +68,13 @@ export default {
             this.createComment(newComment);
             this.toggleCommentForm();
         },
-        checkValidity(){
-            if(this.authorName && this.comment) {
-                this.isValid = true;
-            }
-        },
         toggleCommentForm(){
             this.expanded = !this.expanded;
             if (!this.expanded) this.comment = ''
-        },
-        saveCommentAuthorName(value){
-            this.authorName = value;
         }
     },
     components: {
-        Button,
-        Editor
+        Button
     }
 }
 </script>
@@ -120,7 +112,7 @@ export default {
     margin: 0 0 var(--gap-3);
 }
 
-.comment_form .editor_wrapper,
+.comment_form input,
 .comment_form textarea {
     margin-bottom: var(--gap-2);
 }
@@ -129,7 +121,7 @@ export default {
     width: 100%;
 }
 
-.comment_form .editor_wrapper:last-child,
+.comment_form input:last-child,
 .comment_form textarea:last-child {
     margin-bottom: 0;
 }
