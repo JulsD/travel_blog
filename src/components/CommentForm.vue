@@ -10,8 +10,8 @@
         </transition>
         <transition name="expand">
             <form class="comment_form" 
-                @submit.prevent="addComment"
-                v-if="expanded">
+                  @submit.prevent="addComment"
+                  v-if="expanded">
                 <fieldset>
                     <legend class="visually-hidden">Leave a comment</legend>
                     <label for="comment_author" class="visually-hidden">Your name</label>
@@ -124,12 +124,5 @@ export default {
 .comment_form input:last-child,
 .comment_form textarea:last-child {
     margin-bottom: 0;
-}
-
-.comment_form--follback {
-    display: block;
-    text-align: center;
-    color: var(--grey-color-5);
-    font-size: .9rem;
 }
 </style>

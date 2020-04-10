@@ -47,3 +47,12 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+    .comment_form--follback {
+        display: block;
+        text-align: center;
+        color: var(--grey-color-5);
+        font-size: .9rem;
+    }
+</style>
