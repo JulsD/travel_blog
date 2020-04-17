@@ -19,3 +19,31 @@ input[disabled],
 textarea[disabled] {
     background-color: var(--grey-color-2);
 }
+
+label {
+    display: inline-block;
+    font-weight: 500;
+    font-size: .9rem;
+}
+
+.form-pare:not(:last-child) {
+    margin-bottom: var(--gap-2);
+}
+
+.form-pare label {
+    margin-bottom: var(--gap-1);
+}
+
+.required {
+    position: relative;
+}
+
+.required:after {
+    color: red;
+    font-size: 1.5rem;
+    content: "*";
+    display: block;
+    position: absolute;
+    top: calc(var(--gap-1)*(-1));
+    right: calc(var(--gap-1)*(-1));
+}

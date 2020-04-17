@@ -37,6 +37,21 @@
 .icon-image:before {
   content: "\e90d";
 }
+.icon-file-text2:before {
+  content: "\e926";
+}
+.icon-hour-glass:before {
+  content: "\e979";
+}
+.icon-bin:before {
+  content: "\e9ac";
+}
+.icon-cancel-circle:before {
+  content: "\ea0d";
+}
+.icon-blocked:before {
+  content: "\ea0e";
+}
 .icon-cross:before {
   content: "\ea0f";
 }
@@ -54,4 +69,52 @@
 }
 .icon-circle-left:before {
   content: "\ea44";
+}
+.icon-google:before {
+  content: "\ea89";
+}
+.icon-facebook:before {
+  content: "\ea91";
+}
+.icon-twitter:before {
+  content: "\ea96";
+}
+.icon-github:before {
+  content: "\eab0";
+}
+.icon-yahoo:before {
+  content: "\eabb";
+}
+.icon-appleinc:before {
+  content: "\eabe";
+}
+.icon-windows:before {
+  content: "\eac1";
+}
+.icon-apple-brand:before {
+  content: "\e901";
+  color: #999;
+}
+.icon-facebook-brand:before {
+  content: "\e902";
+  color: #4172b8;
+}
+.icon-github-brand:before {
+  content: "\e903";
+}
+.icon-google-brand:before {
+  content: "\e904";
+  color: #4285f4;
+}
+.icon-microsoft-brand:before {
+  content: "\e906";
+  color: #666;
+}
+.icon-twitter-brand:before {
+  content: "\e907";
+  color: #1da1f2;
+}
+.icon-yahoo-brand:before {
+  content: "\e908";
+  color: #409;
 }
