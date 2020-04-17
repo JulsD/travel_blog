@@ -28,6 +28,24 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-wink:before {
+  content: "\e9e7";
+}
+.icon-confused:before {
+  content: "\e9f5";
+}
+.icon-hipster:before {
+  content: "\e9f9";
+}
+.icon-warning:before {
+  content: "\ea07";
+}
+.icon-notification:before {
+  content: "\ea08";
+}
+.icon-info:before {
+  content: "\ea0c";
+}
 .icon-home:before {
   content: "\e900";
 }

@@ -32,15 +32,20 @@
             <span class="article_footer_border"></span>
             <span class="article_footer_content">{{user.name}}</span>
         </footer>
-
-      <Button type="submit">Add article</Button>
+        
+        <div class="article_form_actions">
+            <Notification type="warning">
+                Editing and draft features are in development.
+            </Notification>
+            <Button type="submit">Add article</Button>
+        </div>
     </form>
 </template>
 
 <script>
 import Button from './atoms/Button';
 import QuillEditor from './QuillEditor';
-import QuillInterpreter from './QuillInterpreter';
+import Notification from './atoms/Notification';
 import { mapState, mapActions } from 'vuex';
 
 export default {
@@ -56,7 +61,7 @@ export default {
     components: {
         Button,
         QuillEditor,
-        QuillInterpreter
+        Notification
     },
     methods: {
         ...mapActions('article', ['createArticle']),
@@ -136,5 +141,16 @@ export default {
 .article_form footer .article_footer_content {
     padding-left: var(--gap-1);
     flex: 0 0 auto;
+}
+
+.article_form_actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.article_form_actions button:not(:first-child),
+.article_form_actions .notification:not(:first-child) {
+    margin-left: var(--gap-2)
 }
 </style>
