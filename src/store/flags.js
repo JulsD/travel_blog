@@ -1,6 +1,6 @@
 const state = {
     sidebar: false,
-    createArticle: false,
+    createArticle: true,
     demoPage: false
 };
 

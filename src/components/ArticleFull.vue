@@ -6,9 +6,13 @@
             <span class="article_date">{{date}}</span>
         </header>
         <p class="article_description">{{article.description}}</p>
+        <!-- TODO: delete when will be removed from db -->
         <section v-for="(section, index) in article.body" :key="index">
             <h2 class="article_section_title">{{section.title}}</h2>
             <p>{{section.content}}</p>
+        </section>
+        <section v-if="article.content">
+            <QuillInterpreter :data="content"/>
         </section>
         <footer>
             <span class="article-footer-border"></span>
@@ -18,6 +22,7 @@
 </template>
 
 <script>
+import QuillInterpreter from './QuillInterpreter';
 import moment from 'moment';
 export default {
     props: {
@@ -32,7 +37,13 @@ export default {
                 return moment(this.article.created_at.toDate()).format('D MMM YYYY, h:mm a');
             }
             return;
+        },
+        content() {
+            return JSON.parse(this.article.content);
         }
+    },
+    components: {
+        QuillInterpreter
     }
 }
 </script>

@@ -1,6 +1,6 @@
-// Editor.vue
+// EditorField.vue
 <template>
-    <div class="editor_wrapper">
+    <div class="editor-field_wrapper">
         <input ref="input"
             type="text"
             v-bind="$attrs"
@@ -12,7 +12,7 @@
                     type="button"
                     @click="edit"
                     styleType="link"
-                    class="editor_toggler editor_toggler_open">
+                    class="editor-field_toggler editor-field_toggler_open">
                 <span class="icon-pencil"></span> 
                 <span class="visually-hidden">Edit</span> 
             </Button>
@@ -20,7 +20,7 @@
                     type="button"
                     styleType="link"
                     @click="save"
-                    class="editor_toggler">
+                    class="editor-field_toggler">
                 <span class="icon-checkmark"></span> 
                 <span class="visually-hidden">Save</span>
             </Button>
@@ -28,7 +28,7 @@
                     type="button"
                     styleType="link"
                     @click="cancel"
-                    class="editor_toggler">
+                    class="editor-field_toggler">
                 <span class="icon-cross"></span> 
                 <span class="visually-hidden">Cancel</span>
             </Button>
@@ -83,12 +83,12 @@ export default {
 </script>
 
 <style scoped>
-.editor_wrapper {
+.editor-field_wrapper {
     display: flex;
     align-items: baseline;
 }
 
-.editor_wrapper .editor_toggler {
+.editor-field_wrapper .editor-field_toggler {
     flex: 0 0 auto;
     border-radius: 50%;
     display: flex;

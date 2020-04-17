@@ -32,7 +32,6 @@
 
 <script scoped>
 import Button from './atoms/Button';
-import Editor from './Editor';
 import { mapActions } from 'vuex';
 
 export default {
