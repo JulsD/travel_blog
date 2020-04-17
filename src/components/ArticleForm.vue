@@ -9,17 +9,24 @@
             <label for="article_description">Article description</label>
             <textarea id="article_description" v-model="article.description" />
 
-            <label for="article_body">Article text</label>
+            <!-- <label for="article_body">Article text</label>
             <textarea id="article_body" v-model="article.body"/>
 
             <label for="article_url">Url</label>
-            <input type="url" id="article_url" v-model="article.url"/>
+            <input type="url" id="article_url" v-model="article.url"/> -->
+
+             <div ref="editor"></div>
+            <button @click="handleQuillConsole">Console result</button>
       </fieldset>
       <Button type="submit">Add article</Button>
     </form>
 </template>
 
 <script>
+import Quill from 'quill';
+import 'quill/dist/quill.core.css';
+import 'quill/dist/quill.snow.css';
+import 'quill/dist/quill.bubble.css';
 import Button from './atoms/Button';
 import { mapState, mapActions } from 'vuex';
 
@@ -32,6 +39,11 @@ export default {
             url: ''
         }
     }),
+    mounted: function () {
+        this.$nextTick(function () {
+            this.initEditor();
+        })
+    },
     computed: mapState('articles', ['articles']),
     components: {
         Button
@@ -42,6 +54,51 @@ export default {
             if(this.article.title && (this.article.description || this.article.body || this.article.url)) {
                 await this.createArticle(this.article)
             }
+        },
+        initEditor() {
+            const toolbarOptions = [
+                [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                ['bold', 'italic', 'underline', 'strike'],
+
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                ['blockquote', 'code-block'],
+                [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+                [{ 'indent': '-1'}, { 'indent': '+1' }],
+                [{ 'direction': 'rtl' }],
+
+                // [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+                // [{ 'font': [] }],
+                [{ 'align': [] }],
+                ['clean'],
+                ['image', 'video']
+            ];
+            this.quill = new Quill(this.$refs.editor, {
+                modules: {
+                    toolbar: toolbarOptions,
+                    history: {
+                        delay: 2000,
+                        maxStack: 500,
+                        userOnly: true
+                    }
+                },
+                placeholder: 'Empty your mind, be shapeless like water ... and start writing an awesome story',
+                theme: 'snow'
+            });
+
+            const Delta = Quill.import('delta');
+            this.accumulatedData = new Delta();
+            this.quill.on('text-change', this.handleQuillChange);
+
+            // this.editor.root.innerHTML = this.value;
+
+            // this.editor.on('text-change', () => this.update());
+        },
+        handleQuillConsole() {
+            console.log(this.quill.getContents());
+            console.log(this.quill.getText());
+        },
+        handleQuillChange(delta) {
+            this.accumulatedData = this.accumulatedData.compose(delta);
         }
     }
 }

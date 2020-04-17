@@ -11,8 +11,15 @@ const actions = {
     }),
 }
 
+const getters = {
+    releasedArticles: state => {
+        return state.articles.filter(a => !a.draft);
+      }
+}
+
 export default {
     namespaced: true,
     state,
-    actions
+    actions,
+    getters
 }
