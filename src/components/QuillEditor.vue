@@ -67,17 +67,24 @@ export default {
         },
         handleQuillChange(delta) {
             this.editorData = this.editorData.compose(delta);
-            this.$emit('input', this.quill.getContents());
+            let result = this.quill.getLength() > 1 ? this.quill.getContents() : null;
+            this.$emit('input', result);
         },
     }
 }
 </script>
 
 <style scoped>
+.editor-wrapper {
+    border-radius: var(--radius);
+    transition: all .5s ease-in;
+}
+
 .editor-wrapper:focus-within {
     border-radius: var(--radius);
     box-shadow: var(--shadow-s);
 }
+
 .editor-wrapper .ql-container {
     font-size: var(--base-font-size);
     font-family: 'Maven Pro', Arial, Helvetica, sans-serif;

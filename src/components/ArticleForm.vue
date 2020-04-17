@@ -8,6 +8,7 @@
             <div class="form-pare">
                 <label for="article_title" class="required">Title</label>
                 <input type="text"
+                       :class="{'not-valid': showValidity && !title}"
                        id="article_title"
                        v-model="title"
                        required />
@@ -21,12 +22,10 @@
 
         <fieldset>
             <legend class="required">Content of the article</legend>
-            <QuillEditor v-model="content"></QuillEditor>
+            <QuillEditor
+                v-model="content"
+                :class="{'not-valid': showValidity && !content}"></QuillEditor>
         </fieldset>
-    
-        <QuillInterpreter :data="content"/>
-
-        <Button type="button" @click="handleQuillConsole">Console result</Button>
 
         <footer>
             <span class="article_footer_border"></span>
@@ -52,7 +51,8 @@ export default {
     data: () => ({
         title: '',
         description: '',
-        content: null
+        content: null,
+        showValidity: false
     }),
     computed: {
         ...mapState('auth', ['user']),
@@ -75,11 +75,12 @@ export default {
                     content: JSON.stringify(vm.content)
                 };
                 
-                await this.createArticle(article);
+                let result = await this.createArticle(article);
+
+                this.$router.push({ name: 'article', params: { id: result.id }});
+            } else {
+                this.showValidity = true;
             }
-        },
-        handleQuillConsole(value) {
-            console.log(this.content);
         }
     }
 }

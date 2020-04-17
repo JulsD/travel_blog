@@ -15,6 +15,10 @@ textarea:focus {
     box-shadow: var(--shadow-s);
 }
 
+.not-valid {
+    box-shadow: 0 0 8px 0 red;
+}
+
 input[disabled],
 textarea[disabled] {
     background-color: var(--grey-color-2);

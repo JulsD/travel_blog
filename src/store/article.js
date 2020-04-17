@@ -23,6 +23,8 @@ const actions = {
         article.starCount = 0;
 
         await articlesCollection.doc(article.id).set(article);
+
+        return article;
     },
 }
 
