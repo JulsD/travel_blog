@@ -89,6 +89,11 @@ export default {
     font-size: var(--base-font-size);
     font-family: 'Maven Pro', Arial, Helvetica, sans-serif;
 }
+
+.editor-wrapper.cyrillic .ql-container {
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
+}
+
 .editor-wrapper >>> .ql-toolbar.ql-snow,
 .editor-wrapper .ql-container.ql-snow {
     border-color: var(--grey-color-2);

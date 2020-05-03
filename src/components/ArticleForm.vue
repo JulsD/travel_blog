@@ -8,7 +8,7 @@
             <div class="form-pare">
                 <label for="article_title" class="required">Title</label>
                 <input type="text"
-                       :class="{'not-valid': showValidity && !title}"
+                       :class="{'not-valid': showValidity && !title, 'cyrillic': this.fontType === 'cyrillic'}"
                        id="article_title"
                        v-model="title"
                        required />
@@ -16,7 +16,7 @@
 
             <div class="form-pare">
                 <label for="article_description">Description</label>
-                <textarea id="article_description" v-model="description" />
+                <textarea id="article_description" v-model="description" :class="{'cyrillic': this.fontType === 'cyrillic'}" />
             </div>
         </fieldset>
 
@@ -24,7 +24,7 @@
             <legend class="required">Content of the article</legend>
             <QuillEditor
                 v-model="content"
-                :class="{'not-valid': showValidity && !content}"></QuillEditor>
+                :class="{'not-valid': showValidity && !content, 'cyrillic': this.fontType === 'cyrillic'}"></QuillEditor>
         </fieldset>
 
         <footer>
@@ -46,6 +46,7 @@ import Button from './atoms/Button';
 import QuillEditor from './QuillEditor';
 import Notification from './atoms/Notification';
 import { mapState, mapActions } from 'vuex';
+import { isCyrillic } from '../services/font.service';
 
 export default {
     data: () => ({
@@ -54,9 +55,30 @@ export default {
         content: null,
         showValidity: false
     }),
+    props: {
+        article: {
+            type: Object,
+            default: null
+        }
+    },
+    created() {
+        if(this.article) {
+            this.title = this.article.title;
+            this.description = this.article.description;
+            this.content = this.article.content;
+            this.fontType = this.article.fontType;
+        }
+    },
     computed: {
         ...mapState('auth', ['user']),
-        ...mapState('articles', ['articles'])
+        ...mapState('articles', ['articles']),
+        fontType() {
+            if(isCyrillic(this.title)) {
+                return 'cyrillic';
+            } else {
+                return 'latin';
+            }
+        }
     },
     components: {
         Button,

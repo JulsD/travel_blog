@@ -13,6 +13,11 @@ body {
     color: var(--text-color);
 }
 
+body .cyrillic,
+body textarea.cyrillic {
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
+}
+
 .visually-hidden {
     border: 0;
     clip: rect(0 0 0 0);
