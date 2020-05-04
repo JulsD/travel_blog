@@ -49,6 +49,7 @@ export default {
 
     .ql-snow >>> .ql-editor {
         padding: 0;
+        text-align: justify;
     }
 
     .ql-snow >>> .ql-editor pre.ql-syntax {
