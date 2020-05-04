@@ -1,6 +1,6 @@
 // ArticleForm
 <template>
-    <form class="article_form" @submit.prevent="onSubmit()">
+    <form class="article_form" @submit.prevent="publish()">
         <legend class="visually-hidden">Article Form</legend>
 
         <fieldset>
@@ -36,7 +36,8 @@
             <Notification type="warning">
                 Editing and draft features are in development.
             </Notification>
-            <Button type="submit">Add article</Button>
+            <Button type="button" @click="saveDruft()">Save as a druft</Button>
+            <Button type="submit">Publish article</Button>
         </div>
     </form>
 </template>
@@ -100,27 +101,46 @@ export default {
     },
     methods: {
         ...mapActions('article', ['createArticle']),
-        async onSubmit() {
-            const vm = this;
-
+        async publish() {
             if(this.title && this.content) {
-                const article = {
-                    title: vm.title,
-                    description: vm.description,
-                    content: JSON.stringify(vm.content)
-                };
+                const article = this.formArticleData();
 
-                try {
-                    let result = await this.createArticle(article);
-                } catch(err) {
-                    alert('Something went wrong. Try one more time latter.');
-                    return;
+                let result = await this.create(article);
+
+                if(result) {
+                    this.clearStorage();
+                    this.$router.push({ name: 'article', params: { id: result.id }});
                 }
-                this.clearStorage();
-                this.$router.push({ name: 'article', params: { id: result.id }});
             } else {
                 this.showValidity = true;
             }
+        },
+        async saveDruft() {
+            if(this.title && this.content) {
+                const article = this.formArticleData({druft: true});
+
+                await this.create(article);
+            } else {
+                this.showValidity = true;
+            }
+        },
+        async create(article) {
+            try {
+                let result = await this.createArticle(article);
+                return result;
+            } catch(err) {
+                alert('Something went wrong. Try one more time latter.');
+                return;
+            }
+        },
+        formArticleData({druft} = {druft: false}) {
+            const article =  {
+                title: this.title,
+                description: this.description,
+                content: JSON.stringify(this.content),
+                druft
+            };
+            return article;
         },
         getArticleDruftFromStorage() {
             const articleDruftStr = localStorage.getItem('articleDruft');
