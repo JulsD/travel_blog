@@ -6,11 +6,6 @@
             <span class="article_date">{{date}}</span>
         </header>
         <p class="article_description">{{article.description}}</p>
-        <!-- TODO: delete when will be removed from db -->
-        <section v-for="(section, index) in article.body" :key="index">
-            <h2 class="article_section_title">{{section.title}}</h2>
-            <p>{{section.content}}</p>
-        </section>
         <section v-if="article.content">
             <QuillInterpreter :data="content"/>
         </section>
@@ -34,7 +29,7 @@ export default {
     computed: {
         date() {
             if (this.article && this.article.created_at) {
-                return moment(this.article.created_at.toDate()).format('D MMM YYYY, h:mm a');
+                return moment(this.article.created_at.seconds*1000).format('D MMM YYYY, h:mm a');
             }
             return;
         },
