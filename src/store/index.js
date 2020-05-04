@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { vuexfireMutations } from 'vuexfire'
+import VuexPersistence from 'vuex-persist'
 
 import auth from './auth'
 import articles from './articles'
@@ -10,6 +11,12 @@ import tags from './tags'
 import flags from './flags'
 
 Vue.use(Vuex);
+
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage,
+  reducer: (state) => ({ article: state.article }),
+  // filter: (mutation) => mutation.type == 'createArticle'
+});
 
 export default new Vuex.Store({
   modules: {
@@ -22,5 +29,6 @@ export default new Vuex.Store({
   },
   mutations: {
     ...vuexfireMutations
-  }
+  },
+  plugins: [vuexLocal.plugin]
 })

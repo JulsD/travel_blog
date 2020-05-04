@@ -15,7 +15,7 @@ import 'quill/dist/quill.bubble.css';
 
 export default {
     model: {
-        prop: 'editorData',
+        prop: 'value',
         event: 'input'
     },
     data: () => ({
@@ -42,12 +42,16 @@ export default {
         placeholder: {
             type: String,
             default: 'Empty your mind, breath ... and start writing'
+        },
+        value: {
+            type: Object,
+            default: null
         }
     },
     mounted: function () {
         this.$nextTick(function () {
             this.initEditor();
-        })
+        });
     },
     methods: {
         initEditor() {
@@ -63,6 +67,8 @@ export default {
             const Delta = Quill.import('delta');
             this.editorData = new Delta();
 
+            this.initEditorContent();
+            
             this.quill.on('text-change', this.handleQuillChange);
         },
         handleQuillChange(delta) {
@@ -70,6 +76,11 @@ export default {
             let result = this.quill.getLength() > 1 ? this.quill.getContents() : null;
             this.$emit('input', result);
         },
+        initEditorContent() {
+            if(this.value) {
+                this.quill.setContents(this.value);
+            }
+        }
     }
 }
 </script>

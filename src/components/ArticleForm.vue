@@ -63,10 +63,23 @@ export default {
     },
     created() {
         if(this.article) {
-            this.title = this.article.title;
-            this.description = this.article.description;
-            this.content = this.article.content;
-            this.fontType = this.article.fontType;
+            this.initFromArticleProp();
+        } else {
+            this.initFromStorage();
+        }
+    },
+    watch:{
+        title(newTitle) {
+            const newArticleDruft = JSON.stringify({...{}, ...this.getArticleDruftFromStorage(), ...{title: newTitle}});
+            localStorage.setItem('articleDruft', newArticleDruft);
+        },
+        description(newDescription) {
+            const newArticleDruft = JSON.stringify({...{}, ...this.getArticleDruftFromStorage(), ...{description: newDescription}});
+            localStorage.setItem('articleDruft', newArticleDruft);
+        },
+        content(newContent) {
+            const newArticleDruft = JSON.stringify({...{}, ...this.getArticleDruftFromStorage(), ...{content: newContent}});
+            localStorage.setItem('articleDruft', newArticleDruft);
         }
     },
     computed: {
@@ -96,13 +109,48 @@ export default {
                     description: vm.description,
                     content: JSON.stringify(vm.content)
                 };
-                
-                let result = await this.createArticle(article);
 
+                try {
+                    let result = await this.createArticle(article);
+                } catch(err) {
+                    alert('Something went wrong. Try one more time latter.');
+                    return;
+                }
+                this.clearStorage();
                 this.$router.push({ name: 'article', params: { id: result.id }});
             } else {
                 this.showValidity = true;
             }
+        },
+        getArticleDruftFromStorage() {
+            const articleDruftStr = localStorage.getItem('articleDruft');
+            const articleDruft = articleDruftStr ? JSON.parse(articleDruftStr) : null;
+
+            return articleDruft;
+        },
+        initFromStorage() {
+            const articleDruft = this.getArticleDruftFromStorage();
+                
+            if(articleDruft?.title) {
+                this.title = articleDruft.title
+            };
+
+            if(articleDruft?.description) {
+                this.description = articleDruft.description
+            };
+
+            if(articleDruft?.content) {
+                this.content = articleDruft.content
+            };
+        },
+        clearStorage() {
+            localStorage.removeItem('articleDruft');
+        },
+        initFromArticleProp() {
+            this.title = this.article.title;
+            this.description = this.article.description;
+            this.content = this.article.content;
+            this.fontType = this.article.fontType;
         }
     }
 }
