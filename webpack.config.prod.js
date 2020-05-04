@@ -4,7 +4,7 @@ const commonConfig = require('./webpack.config.common.js');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = merge(commonConfig, {
@@ -27,6 +27,7 @@ module.exports = merge(commonConfig, {
     }
   },
   optimization: {
+    minimize: true,
     minimizer: [
       new OptimizeCSSAssetsPlugin({
         cssProcessorPluginOptions: {
@@ -36,7 +37,7 @@ module.exports = merge(commonConfig, {
           ],
         }
       }),
-      new UglifyJSPlugin({
+      new TerserPlugin({
         cache: true,
         parallel: true,
         sourceMap: false
