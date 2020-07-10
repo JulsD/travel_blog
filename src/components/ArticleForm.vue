@@ -36,7 +36,7 @@
             <Notification type="warning">
                 Editing and draft features are in development.
             </Notification>
-            <Button type="button" @click="saveDruft()">Save as a druft</Button>
+            <Button type="button" @click="saveDraft()">Save as a draft</Button>
             <Button type="submit">Publish article</Button>
         </div>
     </form>
@@ -71,16 +71,16 @@ export default {
     },
     watch:{
         title(newTitle) {
-            const newArticleDruft = JSON.stringify({...{}, ...this.getArticleDruftFromStorage(), ...{title: newTitle}});
-            localStorage.setItem('articleDruft', newArticleDruft);
+            const newArticleDraft = JSON.stringify({...{}, ...this.getArticleDraftFromStorage(), ...{title: newTitle}});
+            localStorage.setItem('articleDraft', newArticleDraft);
         },
         description(newDescription) {
-            const newArticleDruft = JSON.stringify({...{}, ...this.getArticleDruftFromStorage(), ...{description: newDescription}});
-            localStorage.setItem('articleDruft', newArticleDruft);
+            const newArticleDraft = JSON.stringify({...{}, ...this.getArticleDraftFromStorage(), ...{description: newDescription}});
+            localStorage.setItem('articleDraft', newArticleDraft);
         },
         content(newContent) {
-            const newArticleDruft = JSON.stringify({...{}, ...this.getArticleDruftFromStorage(), ...{content: newContent}});
-            localStorage.setItem('articleDruft', newArticleDruft);
+            const newArticleDraft = JSON.stringify({...{}, ...this.getArticleDraftFromStorage(), ...{content: newContent}});
+            localStorage.setItem('articleDraft', newArticleDraft);
         }
     },
     computed: {
@@ -115,9 +115,9 @@ export default {
                 this.showValidity = true;
             }
         },
-        async saveDruft() {
+        async saveDraft() {
             if(this.title && this.content) {
-                const article = this.formArticleData({druft: true});
+                const article = this.formArticleData({draft: true});
 
                 await this.create(article);
             } else {
@@ -133,38 +133,38 @@ export default {
                 return;
             }
         },
-        formArticleData({druft} = {druft: false}) {
+        formArticleData({draft} = {draft: false}) {
             const article =  {
                 title: this.title,
                 description: this.description,
                 content: JSON.stringify(this.content),
-                druft
+                draft
             };
             return article;
         },
-        getArticleDruftFromStorage() {
-            const articleDruftStr = localStorage.getItem('articleDruft');
-            const articleDruft = articleDruftStr ? JSON.parse(articleDruftStr) : null;
+        getArticleDraftFromStorage() {
+            const articleDraftStr = localStorage.getItem('articleDraft');
+            const articleDraft = articleDraftStr ? JSON.parse(articleDraftStr) : null;
 
-            return articleDruft;
+            return articleDraft;
         },
         initFromStorage() {
-            const articleDruft = this.getArticleDruftFromStorage();
+            const articleDraft = this.getArticleDraftFromStorage();
                 
-            if(articleDruft?.title) {
-                this.title = articleDruft.title
+            if(articleDraft?.title) {
+                this.title = articleDraft.title
             };
 
-            if(articleDruft?.description) {
-                this.description = articleDruft.description
+            if(articleDraft?.description) {
+                this.description = articleDraft.description
             };
 
-            if(articleDruft?.content) {
-                this.content = articleDruft.content
+            if(articleDraft?.content) {
+                this.content = articleDraft.content
             };
         },
         clearStorage() {
-            localStorage.removeItem('articleDruft');
+            localStorage.removeItem('articleDraft');
         },
         initFromArticleProp() {
             this.title = this.article.title;
