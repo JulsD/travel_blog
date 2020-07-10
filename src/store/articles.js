@@ -14,7 +14,10 @@ const actions = {
 const getters = {
     releasedArticles: state => {
         return state.articles.filter(a => !a.draft);
-      }
+    },
+    draftArticles: state => {
+        return state.articles.filter(a => a.draft);
+    }
 }
 
 export default {

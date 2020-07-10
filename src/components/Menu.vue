@@ -25,12 +25,17 @@
                              to="/new-article/"
                              :tabindex="menuExpanded ? 0 : -1">Create New Article</router-link>
             </li>
+            <li v-if="hasDrafts">
+                <router-link class="menu_list__item"
+                             to="/drafts"
+                             :tabindex="menuExpanded ? 0 : -1">Drafts</router-link>
+            </li>
         </ul>
     </div>
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapState, mapGetters } from 'vuex'
 import Button from './atoms/Button.vue'
 import Avatar from './atoms/Avatar.vue';
 
@@ -46,7 +51,11 @@ export default {
     },
     computed: {
         ...mapState('flags', ['createArticle']),
-        ...mapState('auth', ['user'])
+        ...mapState('auth', ['user']),
+        ...mapGetters('articles', ['draftArticles']),
+        hasDrafts(){
+            return this.draftArticles.filter(a => a.author.id == this.user.id).length;
+        }
     },
     methods: {
         ...mapActions('auth', ['logout']),

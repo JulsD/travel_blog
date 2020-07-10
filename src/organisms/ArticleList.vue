@@ -4,23 +4,23 @@
     <section>
         <h1>Articles</h1>
         <div>
-            <ArticlePreview v-for="a in releasedArticles" :key="a.id" :article="a"/>
+            <ArticlePreview v-for="a in articles" :key="a.id" :article="a"/>
         </div>
     </section>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
 import ArticlePreview from '../components/ArticlePreview.vue'
 export default {
-    mounted() {
-        this.init()
+    props: {
+        articles: {
+            type: Array,
+            default: null
+        }
     },
-    computed: mapGetters('articles', ['releasedArticles']),
     components: {
         ArticlePreview
-    },
-    methods: mapActions('articles', ['init'])
+    }
 }
 </script>
 

@@ -16,26 +16,33 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 import ArticleFull from '../components/ArticleFull.vue'
 import CommentForm from '../components/CommentForm.vue'
 import Comment from '../components/Comment.vue'
 import Button from '../components/atoms/Button.vue'
 
 export default {
-    mounted() {
-        this.initArticle(this.$route.params.id);
-        this.initComments(this.$route.params.id);
-    },
-    computed: {
-        ...mapState('auth', ['user', 'isLoggedIn']),
-        ...mapState('article', ['article']),
-        ...mapState('comments', ['comments'])
+    props: {
+        article: {
+            type: Object,
+            default: null
+        },
+        comments: {
+            type: Array,
+            default: null
+        },
+        user: {
+            type: Object,
+            default: null
+        },
+        isLoggedIn: {
+            type: Boolean,
+            default: false
+        }
     },
     methods: {
-        ...mapActions('auth', ['login']),
-        ...mapActions('article', ['initArticle']),
-        ...mapActions('comments', ['initComments'])
+        ...mapActions('auth', ['login'])
     },
     components: {
         CommentForm,
