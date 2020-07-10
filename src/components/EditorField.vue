@@ -8,31 +8,30 @@
             :disabled="!active"
             @enter="save"
             @input="handleInput" />
-            <Button v-if="!active" 
-                    type="button"
-                    @click="edit"
-                    styleType="link"
-                    class="editor-field_toggler editor-field_toggler_open">
-                <span class="icon-pencil"></span> 
-                <span class="visually-hidden">Edit</span> 
-            </Button>
-            <Button v-if="active"
-                    type="button"
-                    styleType="link"
-                    @click="save"
-                    class="editor-field_toggler">
-                <span class="icon-checkmark"></span> 
-                <span class="visually-hidden">Save</span>
-            </Button>
-            <Button v-if="active"
-                    type="button"
-                    styleType="link"
-                    @click="cancel"
-                    class="editor-field_toggler">
-                <span class="icon-cross"></span> 
-                <span class="visually-hidden">Cancel</span>
-            </Button>
-        </div>
+        <Button v-if="!active" 
+                type="button"
+                @click="edit"
+                styleType="link"
+                class="editor-field_toggler editor-field_toggler_open">
+            <span class="icon-pencil"></span> 
+            <span class="visually-hidden">Edit</span> 
+        </Button>
+        <Button v-if="active"
+                type="button"
+                styleType="link"
+                @click="save"
+                class="editor-field_toggler">
+            <span class="icon-checkmark"></span> 
+            <span class="visually-hidden">Save</span>
+        </Button>
+        <Button v-if="active"
+                type="button"
+                styleType="link"
+                @click="cancel"
+                class="editor-field_toggler">
+            <span class="icon-cross"></span> 
+            <span class="visually-hidden">Cancel</span>
+        </Button>
     </div>
 </template>
 

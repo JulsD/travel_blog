@@ -1,23 +1,22 @@
 // ArticleView.component.vue
 <template>
-<PageWrapper>
-    <ArticleFull v-if="article" :article="article"/>
-    <CommentForm :article-id="article.id" :user="user" v-if="user && article && isLoggedIn"/>
-    <p class="comment_form--follback" v-if="!isLoggedIn">
-            <!-- Sign Up
-            or  -->
-        <Button style-type="link" @click="login">Login with Google</Button>
-        to leave a comment
-    </p>
-    <div class="comments_list">
-        <Comment v-for="(comment, index) in comments" :key="index" :comment="comment" />
+    <div>
+        <ArticleFull v-if="article" :article="article"/>
+        <CommentForm :article-id="article.id" :user="user" v-if="user && article && isLoggedIn"/>
+        <p class="comment_form--follback" v-if="!isLoggedIn">
+                <!-- Sign Up
+                or  -->
+            <Button style-type="link" @click="login">Login with Google</Button>
+            to leave a comment
+        </p>
+        <div class="comments_list">
+            <Comment v-for="(comment, index) in comments" :key="index" :comment="comment" />
+        </div>
     </div>
-</PageWrapper>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import PageWrapper from '../components/PageWrapper.vue'
 import ArticleFull from '../components/ArticleFull.vue'
 import CommentForm from '../components/CommentForm.vue'
 import Comment from '../components/Comment.vue'
@@ -39,7 +38,6 @@ export default {
         ...mapActions('comments', ['initComments'])
     },
     components: {
-        PageWrapper,
         CommentForm,
         Comment,
         ArticleFull,

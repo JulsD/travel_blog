@@ -11,7 +11,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import ArticlePreview from './ArticlePreview.vue'
+import ArticlePreview from '../components/ArticlePreview.vue'
 export default {
     mounted() {
         this.init()

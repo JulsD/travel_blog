@@ -7,7 +7,7 @@
 
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex'
-import ArticleList from '../components/ArticleList.vue'
+import ArticleList from '../organisms/ArticleList.vue'
 import PageWrapper from '../components/PageWrapper.vue'
 
 export default {
