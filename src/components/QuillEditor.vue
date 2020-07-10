@@ -18,6 +18,7 @@ export default {
         prop: 'value',
         event: 'input'
     },
+    emits: [ 'input' ],
     data: () => ({
         ediot: null,
         toolbarOptions: [

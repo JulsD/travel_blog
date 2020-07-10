@@ -39,6 +39,7 @@
 <script>
 import Button from './atoms/Button';
 export default {
+    emits: [ 'input', 'save' ],
     data() {
         return {
             active: false,

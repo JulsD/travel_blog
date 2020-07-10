@@ -10,6 +10,7 @@
 
 <script>
 export default {
+    emits: [ 'click' ],
     props: {
         styleType: {
             type: String,
@@ -33,6 +34,11 @@ export default {
         transition-timing-function: linear;
         border: 1px solid var(--btn-border-color);
         border-radius: calc(var(--radius)/2);
+    }
+
+    ::v-slotted(p) {
+        padding: 0;
+        margin: 0;
     }
 
     .btn.btn_link {
