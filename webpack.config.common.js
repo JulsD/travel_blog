@@ -7,7 +7,8 @@ module.exports = {
   entry: ['babel-polyfill', './src/main.js'],
   output: {
     filename: '[name].[chunkhash].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    assetModuleFilename: 'assets/[name][ext]'
   },
   module: {
     rules: [
@@ -22,15 +23,7 @@ module.exports = {
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'assets/fonts/'
-            }
-          }
-        ]
+        type: 'asset/resource'
       }
     ]
   },
@@ -45,8 +38,10 @@ module.exports = {
       template: './src/index.html',
       favicon: './src/assets/favicon.png',
       inject: true,
-      chunksSortMode: 'dependency'
     }),
     new CleanWebpackPlugin()
-  ]
+  ],
+  experiments: {
+    asset: true
+  }
 };

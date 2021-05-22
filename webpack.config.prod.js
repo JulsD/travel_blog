@@ -1,13 +1,9 @@
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const commonConfig = require('./webpack.config.common.js');
-
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
-module.exports = merge(commonConfig, {
+module.exports = {
   mode: 'production',
   devtool: 'source-map',
   module: {
