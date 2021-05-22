@@ -1,6 +1,3 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-
 import Home from './pages/Home.vue'
 import Article from './pages/Article.vue'
 import ArticleNew from './pages/ArticleNew.vue'
