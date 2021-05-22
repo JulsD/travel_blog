@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -38,23 +39,7 @@ module.exports = {
         parallel: true,
         sourceMap: false
      })
-    ],
-    splitChunks: {
-      chunks: 'all',
-      maxInitialRequests: Infinity,
-      minSize: 0,
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/
-        },
-        styles: {
-          test: /\.css$/,
-          name: 'styles',
-          chunks: 'all',
-          enforce: true
-        }
-      }
-    } 
+    ]
   },
   plugins: [
     new MiniCssExtractPlugin(),
@@ -64,7 +49,6 @@ module.exports = {
       test: new RegExp('\\.(js|css)$'),
       threshold: 10240,
       minRatio: 0.8
-    }),
-    new webpack.HashedModuleIdsPlugin()
+    })
   ]
-});
+};

@@ -1,7 +1,4 @@
-const { merge } = require('webpack-merge');
-const commonConfig = require('./webpack.config.common.js');
-
-module.exports = merge(commonConfig, {
+module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
@@ -25,9 +22,6 @@ module.exports = merge(commonConfig, {
     extensions: ['*', '.js', '.vue', '.json']
   },
   optimization: {
-    runtimeChunk: 'single',
-    splitChunks: {
-      chunks: 'all'
-    }
+    runtimeChunk: 'single'
   }
-});
+};

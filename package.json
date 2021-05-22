@@ -4,9 +4,9 @@
   "description": "Travel blog",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode=production",
-    "start:dev": "webpack serve --mode development --open",
-    "start:prod": "webpack serve --mode production --open --env production",
+    "build": "webpack --env prod",
+    "start:dev": "webpack serve --open --env dev",
+    "start:prod": "webpack serve --open --env prod",
     "deploy": "npm run build && firebase deploy"
   },
   "keywords": [
