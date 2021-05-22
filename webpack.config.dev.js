@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
@@ -16,12 +18,18 @@ module.exports = {
     ]
   },
   resolve: {
+    extensions: [ '.tsx', '.ts', '.js', '.vue' ],
     alias: {
-      'vue$': 'vue/dist/vue.runtime.js'
-    },
-    extensions: ['*', '.js', '.vue', '.json']
+        'vue': '@vue/runtime-dom'
+    }
   },
   optimization: {
     runtimeChunk: 'single'
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      __VUE_OPTIONS_API__: true,
+      __VUE_PROD_DEVTOOLS__: true
+    })
+  ],
 };
