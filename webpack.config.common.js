@@ -1,6 +1,5 @@
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   output: {
@@ -38,7 +37,6 @@ module.exports = {
       favicon: './src/assets/favicon.png',
       inject: true,
     }),
-    new CleanWebpackPlugin()
   ],
   experiments: {
     asset: true
