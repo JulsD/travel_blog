@@ -1,13 +1,7 @@
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const commonConfig = require('./webpack.config.common.js');
-
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
-module.exports = merge(commonConfig, {
+module.exports = {
   mode: 'production',
   devtool: 'source-map',
   module: {
@@ -29,46 +23,12 @@ module.exports = merge(commonConfig, {
   optimization: {
     minimize: true,
     minimizer: [
-      new OptimizeCSSAssetsPlugin({
-        cssProcessorPluginOptions: {
-          preset: [ 
-            'default',
-            { discardComments: { removeAll: true } } 
-          ],
-        }
-      }),
-      new TerserPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: false
-     })
-    ],
-    splitChunks: {
-      chunks: 'all',
-      maxInitialRequests: Infinity,
-      minSize: 0,
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/
-        },
-        styles: {
-          test: /\.css$/,
-          name: 'styles',
-          chunks: 'all',
-          enforce: true
-        }
-      }
-    } 
+      new CssMinimizerPlugin()
+    ]
   },
   plugins: [
-    new MiniCssExtractPlugin(),
-    new CompressionPlugin({
-      filename: '[path].gz[query]',
-      algorithm: 'gzip',
-      test: new RegExp('\\.(js|css)$'),
-      threshold: 10240,
-      minRatio: 0.8
-    }),
-    new webpack.HashedModuleIdsPlugin()
+    new MiniCssExtractPlugin({
+      filename: 'styles.css'
+    })
   ]
-});
+};

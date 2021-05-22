@@ -1,13 +1,12 @@
-const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: ['babel-polyfill', './src/main.js'],
   output: {
+    publicPath: '',
     filename: '[name].[chunkhash].js',
-    path: path.resolve(__dirname, 'dist')
+    assetModuleFilename: 'assets/[name][ext]',
+    clean: true,
   },
   module: {
     rules: [
@@ -21,16 +20,8 @@ module.exports = {
         loader: 'babel-loader'
       },
       {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'assets/fonts/'
-            }
-          }
-        ]
+        test: /\.(woff(2)?|ttf|eot|svg|png)(\?v=\d+\.\d+\.\d+)?$/,
+        type: 'asset/resource'
       }
     ]
   },
@@ -45,8 +36,9 @@ module.exports = {
       template: './src/index.html',
       favicon: './src/assets/favicon.png',
       inject: true,
-      chunksSortMode: 'dependency'
     }),
-    new CleanWebpackPlugin()
-  ]
+  ],
+  experiments: {
+    asset: true
+  }
 };
