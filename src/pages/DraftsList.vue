@@ -22,7 +22,7 @@ export default {
     ...mapGetters('articles', ['draftArticles']),
     ...mapState('auth', ['user']),
     drafts(){
-        return this.draftArticles.filter(a => a.author.id == this.user.id);
+        return this.draftArticles.filter(a => a.author?.id == this.user?.id);
       }
     },
   methods: mapActions('articles', ['init'])

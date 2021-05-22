@@ -54,7 +54,7 @@ export default {
         ...mapState('auth', ['user']),
         ...mapGetters('articles', ['draftArticles']),
         hasDrafts(){
-            return this.draftArticles.filter(a => a.author.id == this.user.id).length;
+            return this.draftArticles.filter(a => a.author?.id == this.user?.id).length;
         }
     },
     methods: {
